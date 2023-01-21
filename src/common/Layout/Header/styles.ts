@@ -1,4 +1,26 @@
-import styled from 'styled-components';
+import styled, { DefaultTheme } from 'styled-components';
+
+type CurrentThemeTypes = 'light' | 'dark';
+interface NavLinkProps {
+  isActive: boolean;
+  currentTheme: CurrentThemeTypes;
+}
+
+interface NavColorProps {
+  theme: DefaultTheme;
+  condition: [boolean, CurrentThemeTypes];
+}
+
+const getNavColor = ({ theme, condition }: NavColorProps) => {
+  const [isActive, currentTheme] = condition;
+  const { white, dark, gray, lightGray } = theme.colors;
+
+  if (isActive) {
+    return currentTheme === 'light' ? dark : white;
+  }
+
+  return currentTheme === 'light' ? gray : lightGray;
+};
 
 export const Container = styled.header`
   width: 100%;
@@ -38,17 +60,13 @@ export const Nav = styled.nav`
   }
 `;
 
-interface NavLinkProps {
-  isActive: boolean;
-}
-
 export const Anchor = styled.a<NavLinkProps>`
   text-decoration: ${({ isActive }) =>
     isActive ? 'none' : 'underline'} !important;
   margin-left: 1em;
 
-  color: ${({ theme, isActive }) =>
-    isActive ? theme.colors.dark : theme.colors.gray};
+  color: ${({ theme, isActive, currentTheme }) =>
+    getNavColor({ theme, condition: [isActive, currentTheme] })};
   font-size: 1em !important;
   font-weight: ${({ isActive }) => (isActive ? '800' : '400')};
 `;

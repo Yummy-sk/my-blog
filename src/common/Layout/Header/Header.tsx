@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { nanoid } from 'nanoid';
+import { useColorMode } from '@chakra-ui/react';
+import { ThemeModeToggler } from '@/common/DarkMode';
 import * as S from './styles';
 
 interface LinkProps {
@@ -10,9 +12,13 @@ interface LinkProps {
 }
 
 function NavLink({ href, name, isActive }: LinkProps) {
+  const { colorMode } = useColorMode();
+
   return (
     <Link href={href} passHref>
-      <S.Anchor isActive={isActive}>{name}</S.Anchor>
+      <S.Anchor isActive={isActive} currentTheme={colorMode}>
+        {name}
+      </S.Anchor>
     </Link>
   );
 }
@@ -41,6 +47,7 @@ export function Header() {
     <S.Container>
       <S.Header>
         <h1>Yeummy-sk</h1>
+        <ThemeModeToggler />
       </S.Header>
       <S.Nav>
         <ul>

@@ -4,6 +4,7 @@ interface IColor {
   white: string;
   dark: string;
   gray: string;
+  lightGray: string;
 }
 
 declare module 'styled-components' {
