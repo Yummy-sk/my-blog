@@ -55,7 +55,6 @@ export function Moon() {
       fill='none'
       xmlns='http://www.w3.org/2000/svg'
       whileTap={whileTap}
-      // Centers the rotation anchor point vertically & horizontally
       style={{ originX: '50%', originY: '50%' }}
     >
       <motion.circle
