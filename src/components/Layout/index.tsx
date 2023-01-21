@@ -1,4 +1,7 @@
 import { Roboto } from '@next/font/google';
+import { Header } from './Header/Header';
+import { Body } from './Body/Body';
+import { Footer } from './Footer/Footer';
 import * as S from './styles';
 
 const roboto = Roboto({
@@ -10,7 +13,11 @@ const roboto = Roboto({
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <S.Container className={roboto.className}>
-      <S.Wrapper>{children}</S.Wrapper>
+      <S.Wrapper>
+        <Header />
+        <Body>{children}</Body>
+        <Footer />
+      </S.Wrapper>
     </S.Container>
   );
 }

@@ -10,9 +10,14 @@ export const Container = styled.main`
 `;
 
 export const Wrapper = styled.div`
-  width: 660px;
+  width: 676px;
   height: 100%;
   min-height: 100vh;
 
+  padding: 0 1rem;
   background-color: inherit;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `;

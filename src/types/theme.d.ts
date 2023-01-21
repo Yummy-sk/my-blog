@@ -3,6 +3,7 @@ import 'styled-components';
 interface IColor {
   white: string;
   dark: string;
+  gray: string;
 }
 
 declare module 'styled-components' {
