@@ -13,4 +13,6 @@ export const Wrapper = styled.div`
   width: 660px;
   height: 100%;
   min-height: 100vh;
+
+  background-color: inherit;
 `;
