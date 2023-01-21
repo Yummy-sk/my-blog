@@ -10,9 +10,9 @@ type LogoItem = {
   href: string;
   name: 'LinkedIn' | 'Github' | 'Twitter' | 'RSS';
 };
-type NameType = Partial<LogoItem>['name'];
+type NameType = Pick<LogoItem, 'name'>;
 
-const getIcon = ({ name }: { name: NameType }) => {
+const getIcon = ({ name }: NameType) => {
   switch (name) {
     case 'LinkedIn':
       return <AiFillLinkedin />;
@@ -27,7 +27,7 @@ const getIcon = ({ name }: { name: NameType }) => {
   }
 };
 
-function Logo({ name }: { name: Partial<LogoItem>['name'] }) {
+function Logo({ name }: NameType) {
   const theme = useTheme();
 
   return cloneElement(
