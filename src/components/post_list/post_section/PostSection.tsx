@@ -1,6 +1,8 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useColorMode, ColorMode } from '@chakra-ui/react';
 import { PostListProps } from '@/types/data';
+import { parseTagString } from '@/util';
 import * as S from './PostSection.style';
 
 interface TagProps {
@@ -9,9 +11,21 @@ interface TagProps {
 }
 
 function Tag({ tag, currentTheme }: TagProps) {
+  const router = useRouter();
+
+  const onClick = () => {
+    router.push(`/post?tag=${tag}`).then(() =>
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth',
+      }),
+    );
+  };
+
   return (
-    <S.Tag currentTheme={currentTheme}>
-      <p>#{tag}</p>
+    <S.Tag currentTheme={currentTheme} onClick={onClick}>
+      <p>#{parseTagString({ tag })}</p>
     </S.Tag>
   );
 }

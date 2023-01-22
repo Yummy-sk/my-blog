@@ -72,7 +72,7 @@ export const Bottom = styled.div<Theme>`
   }
 `;
 
-export const Tag = styled.p<Theme>`
+export const Tag = styled.button<Theme>`
   transition: color 0.3s ease-in-out;
   font-size: 0.875rem;
 

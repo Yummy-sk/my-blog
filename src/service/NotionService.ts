@@ -39,10 +39,13 @@ class NotionService {
   }
 
   // Note: notion API를 통해 데이터베이스에 있는 모든 데이터를 가져옵니다.
-  async getPosts(
+  async getPosts({
     targetTag = '',
     targetTitle = '',
-  ): Promise<Array<PostListTypes> | null> {
+  }: {
+    targetTag?: string;
+    targetTitle?: string;
+  }): Promise<Array<PostListTypes> | null> {
     try {
       const results = await this.notionQuery({
         filter: {
