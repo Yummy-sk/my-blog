@@ -1,22 +1,13 @@
 import { NotionService } from '@/service';
+import { PostListProps } from '@/types/data';
+import { PostList } from '@/components';
 
 interface Props {
-  posts: {
-    title: string;
-    description: string;
-    number: number;
-    tags: Array<string>;
-    createdTime: string;
-  };
+  posts: Array<PostListProps>;
 }
 
-export default function PostList({ posts }: Props) {
-  console.log(posts);
-  return (
-    <div>
-      <h1>Post List</h1>
-    </div>
-  );
+export default function Page({ posts }: Props) {
+  return <PostList posts={posts} />;
 }
 
 export async function getStaticProps() {

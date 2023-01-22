@@ -5,6 +5,7 @@ import {
 } from '@notionhq/client/build/src/api-endpoints';
 import { NotionToMarkdown } from 'notion-to-md';
 import { parseData } from '@/util';
+import { PostListTypes } from '@/types/data';
 
 class NotionService {
   private notion: Client;
@@ -38,7 +39,10 @@ class NotionService {
   }
 
   // Note: notion API를 통해 데이터베이스에 있는 모든 데이터를 가져옵니다.
-  async getPosts(targetTag = '', targetTitle = '') {
+  async getPosts(
+    targetTag = '',
+    targetTitle = '',
+  ): Promise<Array<PostListTypes> | null> {
     try {
       const results = await this.notionQuery({
         filter: {

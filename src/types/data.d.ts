@@ -43,3 +43,12 @@ type PostListTypes = {
   tags: Array<string>;
   createdTime: string;
 };
+
+type PostListProps = {
+  title: string;
+  description: string;
+  number: number;
+  tags: Array<string>;
+  createdTime: string;
+  id: string;
+};
