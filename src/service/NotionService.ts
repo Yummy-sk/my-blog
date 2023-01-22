@@ -94,7 +94,7 @@ class NotionService {
   }
 
   // Note: getStaticPath를 위해 전체 포스트 id를 가져옵니다.
-  async getPostId() {
+  async getPostIds() {
     try {
       const results = await this.notionQuery({
         filter: {
