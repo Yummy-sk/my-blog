@@ -7,7 +7,6 @@ interface Props {
 }
 
 export function PostList({ posts }: Props) {
-  console.log(posts);
   return (
     <S.Container>
       {posts.map(post => (
