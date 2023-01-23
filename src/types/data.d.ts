@@ -1,5 +1,11 @@
 import { TextRichTextItemResponse } from '@notionhq/client/build/src/api-endpoints';
 
+type Merge<A, B> = {
+  [K in keyof A]: K extends keyof B ? B[K] : A[K];
+} & B extends infer O
+  ? { [K in keyof O]: O[K] }
+  : never;
+
 type SelectTypes = {
   id: string;
   name: string;
@@ -36,6 +42,13 @@ type CreatedTimeResponse = {
   id: string;
 };
 
+type CoverImageResponse = {
+  type: 'external';
+  external: {
+    url: string;
+  };
+};
+
 type PostListTypes = {
   title: string;
   description: string;
@@ -44,11 +57,11 @@ type PostListTypes = {
   createdTime: string;
 };
 
-type PostListProps = {
-  title: string;
-  description: string;
-  number: number;
-  tags: Array<string>;
-  createdTime: string;
-  id: string;
-};
+type PostListProps = Merge<PostListTypes, { id: string }>;
+
+type PostDetailProps = Merge<PostListProps, { cover: string }>;
+
+interface PostPageProps {
+  detail: PostDetailProps;
+  contents: string;
+}

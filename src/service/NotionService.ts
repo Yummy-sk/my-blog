@@ -4,8 +4,8 @@ import {
   QueryDatabaseParameters,
 } from '@notionhq/client/build/src/api-endpoints';
 import { NotionToMarkdown } from 'notion-to-md';
-import { parseData } from '@/util';
-import { PostListTypes } from '@/types/data';
+import { getCoverImg, parseData } from '@/util';
+import { CoverImageResponse, PostListTypes } from '@/types/data';
 
 class NotionService {
   private notion: Client;
@@ -123,8 +123,29 @@ class NotionService {
     }
   }
 
-  // Note: notion 페에지 콘텐츠를 string으로 파싱하여 반환합니다.
+  // Note: notion 페에지의 상세 정보를 가져옵니다.
   async getPostDetail(id: string) {
+    try {
+      const result = (await this.notion.pages.retrieve({
+        page_id: id,
+      })) as PageObjectResponse;
+
+      // Note: notion Response상 cover는 다른 형식이기 때문에 따로 분리합니다.
+      const { cover, properties } = result;
+
+      return {
+        cover: getCoverImg(cover as CoverImageResponse),
+        ...parseData({ properties }),
+      };
+    } catch (error) {
+      console.error(error);
+
+      return null;
+    }
+  }
+
+  // Note: notion 페에지 콘텐츠를 string으로 파싱하여 반환합니다.
+  async getPostContent(id: string) {
     try {
       const result = await this.notionToMarkdown.pageToMarkdown(id);
       const contents = this.notionToMarkdown.toMarkdownString(result);

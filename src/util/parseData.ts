@@ -8,6 +8,7 @@ import {
   TitleResponse,
   CreatedTimeResponse,
   PostListTypes,
+  CoverImageResponse,
 } from '@/types/data';
 
 const getTitle = (data: TitleResponse): string => {
@@ -31,6 +32,9 @@ const getTags = (data: MultiSelectResponse): Array<string> => {
 };
 
 const getCreatedTime = (data: CreatedTimeResponse): string => data.created_time;
+
+export const getCoverImg = (data: CoverImageResponse): string =>
+  data.external.url;
 
 export const parseData = ({
   properties,

@@ -1,24 +1,43 @@
 import { NotionService } from '@/service';
+import { PostPageProps } from '@/types/data';
+import { Transition } from '@/common';
 
-export default function Page(props: any) {
-  console.log(props);
+export default function Page({ detail, contents }: PostPageProps) {
+  console.log(detail);
+  console.log(contents);
   return (
-    <div>
-      <h1>Post</h1>
-    </div>
+    <Transition>
+      <div>
+        <h1>Post</h1>
+      </div>
+    </Transition>
   );
 }
-export function getStaticProps({
+export async function getStaticProps({
   params: { slug },
 }: {
   params: { slug: string };
 }) {
-  // const notionService = new NotionService();
+  const notionService = new NotionService();
+  const [detail, contents] = await Promise.all([
+    notionService.getPostDetail(slug),
+    notionService.getPostContent(slug),
+  ]);
 
-  console.log(slug);
+  if (!detail || !contents) {
+    // Note: 에러가 발생했을 경우, 에러 페이지로 리다이렉트 합니다.
+    return {
+      redirect: {
+        destination: '/error',
+        permanent: false,
+      },
+    };
+  }
+
   return {
     props: {
-      text: '',
+      detail,
+      contents,
     },
   };
 }
