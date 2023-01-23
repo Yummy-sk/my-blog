@@ -1,17 +1,9 @@
 import { NotionService } from '@/service';
 import { PostPageProps } from '@/types/data';
-import { Transition } from '@/common';
+import { Post } from '@/components';
 
 export default function Page({ detail, contents }: PostPageProps) {
-  console.log(detail);
-  console.log(contents);
-  return (
-    <Transition>
-      <div>
-        <h1>Post</h1>
-      </div>
-    </Transition>
-  );
+  return <Post detail={detail} contents={contents} />;
 }
 export async function getStaticProps({
   params: { slug },
@@ -19,6 +11,7 @@ export async function getStaticProps({
   params: { slug: string };
 }) {
   const notionService = new NotionService();
+  // Note: 포스트 정보와 포스트 내용을 가져옵니다.
   const [detail, contents] = await Promise.all([
     notionService.getPostDetail(slug),
     notionService.getPostContent(slug),

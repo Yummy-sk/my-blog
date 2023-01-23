@@ -34,7 +34,7 @@ export function PostOption() {
           </S.Button>
         )}
       </S.Row>
-      <Input placeholder='Search Keyword' />
+      <Input placeholder='Search Keyword' width='100%' />
     </S.Container>
   );
 }

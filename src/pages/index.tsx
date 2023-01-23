@@ -1,16 +1,11 @@
 import { Home } from '@/components';
-import { Transition } from '@/common';
 
 interface Props {
   src: string;
 }
 
 export default function Page({ src }: Props) {
-  return (
-    <Transition>
-      <Home src={src} />
-    </Transition>
-  );
+  return <Home src={src} />;
 }
 
 export function getStaticProps() {

@@ -2,7 +2,6 @@ import { NextPageContext } from 'next';
 import { NotionService } from '@/service';
 import { PostListProps } from '@/types/data';
 import { PostList } from '@/components';
-import { Transition } from '@/common';
 
 interface Props {
   posts: Array<PostListProps>;
@@ -12,11 +11,7 @@ interface Query {
 }
 
 export default function Page({ posts }: Props) {
-  return (
-    <Transition>
-      <PostList posts={posts} />
-    </Transition>
-  );
+  return <PostList posts={posts} />;
 }
 
 export async function getServerSideProps(context: NextPageContext) {
