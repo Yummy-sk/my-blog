@@ -1,13 +1,14 @@
+import { PostContent } from '@/components/post/post_content/PostContent';
 import { Transition } from '@/common';
 import { PostPageProps } from '@/types/data';
 import * as S from './style';
 
-export function Post({ detail, contents }: PostPageProps) {
-  console.log(detail, contents);
+export function Post({ detail, content }: PostPageProps) {
+  console.log(detail);
   return (
     <S.Container>
       <Transition>
-        <h1>Post</h1>
+        <PostContent content={content} />
       </Transition>
     </S.Container>
   );

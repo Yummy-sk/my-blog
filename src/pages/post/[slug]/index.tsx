@@ -1,9 +1,10 @@
+import { bundleMDX } from 'mdx-bundler';
 import { NotionService } from '@/service';
 import { PostPageProps } from '@/types/data';
 import { Post } from '@/components';
 
-export default function Page({ detail, contents }: PostPageProps) {
-  return <Post detail={detail} contents={contents} />;
+export default function Page({ detail, content }: PostPageProps) {
+  return <Post detail={detail} content={content} />;
 }
 export async function getStaticProps({
   params: { slug },
@@ -27,10 +28,14 @@ export async function getStaticProps({
     };
   }
 
+  const { code } = await bundleMDX({
+    source: contents,
+  });
+
   return {
     props: {
       detail,
-      contents,
+      content: code,
     },
   };
 }

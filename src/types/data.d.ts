@@ -63,5 +63,5 @@ type PostDetailProps = Merge<PostListProps, { cover: string }>;
 
 interface PostPageProps {
   detail: PostDetailProps;
-  contents: string;
+  content: string;
 }
