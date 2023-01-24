@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { getMDXComponent } from 'mdx-bundler/client';
 import dracula from 'react-syntax-highlighter/dist/cjs/styles/prism/dracula';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { useColorMode } from '@chakra-ui/react';
 import {
   AnchorProps,
   BlockQuoteProps,
@@ -17,7 +18,6 @@ import {
   PrePropsExtended,
   UnorderedListProps,
 } from '@/types/content';
-import { useColorMode } from '@chakra-ui/react';
 import * as S from './PostContent.style';
 
 function Heading(props: HeadingProps) {
