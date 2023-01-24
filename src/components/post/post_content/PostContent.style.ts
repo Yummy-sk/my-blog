@@ -1,3 +1,4 @@
+import { ColorMode } from '@chakra-ui/react';
 import styled from 'styled-components';
 
 export const HeadingH1 = styled.h1`
@@ -112,4 +113,11 @@ export const OrderedList = styled.ol`
   li ul li ul {
     list-style: lower-roman;
   }
+`;
+
+export const Anchor = styled.a<{ currentTheme: ColorMode }>`
+  color: ${({ theme, currentTheme }) =>
+    currentTheme === 'light' ? theme.colors.gray : theme.colors.lightGray};
+
+  text-decoration: underline;
 `;

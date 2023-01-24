@@ -5,6 +5,7 @@ import { getMDXComponent } from 'mdx-bundler/client';
 import dracula from 'react-syntax-highlighter/dist/cjs/styles/prism/dracula';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import {
+  AnchorProps,
   BlockQuoteProps,
   BoldProps,
   CodeProps,
@@ -16,6 +17,7 @@ import {
   PrePropsExtended,
   UnorderedListProps,
 } from '@/types/content';
+import { useColorMode } from '@chakra-ui/react';
 import * as S from './PostContent.style';
 
 function Heading(props: HeadingProps) {
@@ -73,7 +75,7 @@ function Paragraph(props: ParagraphProps) {
 }
 
 function Pre(props: PreProps) {
-  // TOOD: className으로 어떤 언어인지 확장하기
+  // TODO: className으로 어떤 언어인지 확장하기
   const {
     children: {
       props: { children: code, className },
@@ -123,6 +125,13 @@ function OrderedList(props: OrderedListProps) {
   return <S.OrderedList {...props} />;
 }
 
+function Anchor(props: AnchorProps) {
+  // TODO: hover 했을 때, tooltip으로 링크 주소 보여주기
+  // TODO: children이 "bookmark"일 때, 노션처럼 마크업으로 보여주기
+  const { colorMode } = useColorMode();
+  return <S.Anchor currentTheme={colorMode} {...props} />;
+}
+
 const components = {
   h1: (props: HeadingProps) => <Heading {...{ ...props, 'aria-level': 1 }} />,
   h2: (props: HeadingProps) => <Heading {...{ ...props, 'aria-level': 2 }} />,
@@ -135,6 +144,7 @@ const components = {
   pre: (props: PreProps) => <Pre {...props} />,
   ul: (props: UnorderedListProps) => <UnorderedList {...props} />,
   ol: (props: OrderedListProps) => <OrderedList {...props} />,
+  a: (props: AnchorProps) => <Anchor {...props} />,
 };
 
 export function PostContent({ content }: { content: string }) {

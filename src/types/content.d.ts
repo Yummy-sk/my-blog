@@ -54,3 +54,8 @@ type OrderedListProps = DetailedHTMLProps<
   OlHTMLAttributes<HTMLOListElement>,
   HTMLOListElement
 >;
+
+type AnchorProps = DetailedHTMLProps<
+  AnchorHTMLAttributes<HTMLAnchorElement>,
+  HTMLAnchorElement
+>;
