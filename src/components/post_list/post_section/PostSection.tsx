@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useColorMode, ColorMode } from '@chakra-ui/react';
 import { PostListProps } from '@/types/data';
-import { parseTagString } from '@/util';
+import { parseDateString, parseTagString } from '@/util';
 import * as S from './PostSection.style';
 
 interface TagProps {
@@ -57,11 +57,8 @@ export function PostSection({ post }: { post: PostListProps }) {
       </S.Middle>
       <S.Bottom currentTheme={colorMode}>
         <time>
-          {new Date(createdTime).toLocaleDateString('en-US', {
-            year: 'numeric',
-            month: 'short',
-            weekday: 'short',
-            day: 'numeric',
+          {parseDateString({
+            dateString: createdTime,
           })}
         </time>
       </S.Bottom>

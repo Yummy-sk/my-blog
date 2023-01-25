@@ -1,8 +1,8 @@
 import { ColorMode } from '@chakra-ui/react';
 import styled from 'styled-components';
 
-export const HeadingH1 = styled.h1`
-  font-size: 2.14286em;
+export const HeadingH1 = styled.h2`
+  font-size: 1.8em;
   font-weight: 800;
 
   &:not(:first-child) {
@@ -10,14 +10,14 @@ export const HeadingH1 = styled.h1`
   }
 `;
 
-export const HeadingH2 = styled.h2`
-  font-size: 1.42857em;
+export const HeadingH2 = styled.h3`
+  font-size: 1.4em;
   font-weight: 700;
   margin: 0.8em 0;
 `;
 
-export const HeadingH3 = styled.h3`
-  font-size: 1.28571em;
+export const HeadingH3 = styled.h4`
+  font-size: 1em;
   font-weight: 600;
   margin: 0.8em 0;
 `;
@@ -62,12 +62,13 @@ export const CustomImageWrapper = styled.div`
   display: flex;
   justify-content: center;
 
+  width: 100%;
+
   & .autoImage {
     object-fit: contain !important;
     position: relative !important;
     height: auto !important;
-  }import { ColorMode } from '@chakra-ui/react';
-
+  }
 
   margin: 1rem 0;
 `;

@@ -20,4 +20,8 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  @media (max-width: 676px) {
+    width: 100%;
+  }
 `;
