@@ -39,7 +39,13 @@ function CustomImage(props: ImageProps) {
   const { src, alt } = props;
   return (
     <S.CustomImageWrapper>
-      <Image className='autoImage' fill src={src || ''} alt={alt || ''} />
+      <Image
+        className='autoImage'
+        fill
+        sizes='100%'
+        src={src || ''}
+        alt={alt || ''}
+      />
     </S.CustomImageWrapper>
   );
 }

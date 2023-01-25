@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { ColorMode, useColorMode } from '@chakra-ui/react';
 import { PostDetailProps } from '@/types/data';
-import { parseDateString, parseTagString } from '@/util';
+import { getCdnSrc, parseDateString, parseTagString } from '@/util';
 import * as S from './PostHeader.style';
 
 interface TagProps {
@@ -30,13 +30,7 @@ export function PostHeader({ detail }: { detail: PostDetailProps }) {
   const router = useRouter();
 
   const onTagClick = ({ tag }: { tag: string }) => {
-    router.push(`/post?tag=${tag}`).then(() =>
-      window.scrollTo({
-        top: 0,
-        left: 0,
-        behavior: 'smooth',
-      }),
-    );
+    router.push(`/post?tag=${tag}`).then(() => console.log(''));
   };
 
   const onBackClick = () => {
@@ -71,7 +65,24 @@ export function PostHeader({ detail }: { detail: PostDetailProps }) {
         </S.Inner>
       </S.Wrapper>
       <S.ImgWrapper>
-        <Image className='autoImage' src={cover} alt={title} fill />
+        <Image
+          className='autoImage'
+          src={getCdnSrc({
+            src: cover,
+            width: 644,
+            height: 430,
+          })}
+          alt={title}
+          fill
+          sizes='100%'
+        />
+        {/* <Image
+          className='autoImage'
+          src={cover}
+          alt={title}
+          fill
+          sizes='100%'
+        /> */}
       </S.ImgWrapper>
     </S.Container>
   );
