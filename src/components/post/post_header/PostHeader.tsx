@@ -75,6 +75,7 @@ export function PostHeader({ detail }: { detail: PostDetailProps }) {
           alt={title}
           fill
           sizes='100%'
+          priority
         />
       </S.ImgWrapper>
     </S.Container>

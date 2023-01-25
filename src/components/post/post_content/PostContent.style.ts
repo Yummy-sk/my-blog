@@ -56,7 +56,7 @@ export const Pre = styled.pre`
   font-size: 0.85714em;
 `;
 
-export const CustomImageWrapper = styled.div`
+export const CustomImageWrapper = styled.span`
   position: relative;
 
   display: flex;

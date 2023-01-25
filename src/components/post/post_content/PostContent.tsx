@@ -45,6 +45,7 @@ function CustomImage(props: ImageProps) {
         sizes='100%'
         src={src || ''}
         alt={alt || ''}
+        priority
       />
     </S.CustomImageWrapper>
   );
