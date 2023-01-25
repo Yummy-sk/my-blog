@@ -37,7 +37,7 @@ export const Header = styled.div`
 
   margin-bottom: 1.5em;
 
-  h1 {
+  button {
     font-size: 1.8em !important;
     font-weight: 800;
   }
@@ -62,7 +62,7 @@ export const Nav = styled.nav`
   }
 `;
 
-export const Anchor = styled.a<NavLinkProps>`
+export const Anchor = styled.p<NavLinkProps>`
   text-decoration: ${({ isActive }) =>
     isActive ? 'none' : 'underline'} !important;
   margin-left: 1em;

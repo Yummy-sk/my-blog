@@ -51,7 +51,7 @@ export function Header() {
     <S.Container>
       <S.Header>
         <button type='button' onClick={onClick}>
-          <h1>Yeummy-sk</h1>
+          Yeummy-sk
         </button>
         <ThemeModeToggler />
       </S.Header>
