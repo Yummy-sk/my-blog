@@ -82,13 +82,6 @@ export function PostHeader({ detail }: { detail: PostDetailProps }) {
           fill
           sizes='100%'
         />
-        {/* <Image
-          className='autoImage'
-          src={cover}
-          alt={title}
-          fill
-          sizes='100%'
-        /> */}
       </S.ImgWrapper>
     </S.Container>
   );
