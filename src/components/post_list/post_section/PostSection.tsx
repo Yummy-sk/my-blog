@@ -14,13 +14,7 @@ function Tag({ tag, currentTheme }: TagProps) {
   const router = useRouter();
 
   const onClick = () => {
-    router.push(`/post?tag=${tag}`).then(() =>
-      window.scrollTo({
-        top: 0,
-        left: 0,
-        behavior: 'smooth',
-      }),
-    );
+    router.push(`/post?tag=${tag}`);
   };
 
   return (

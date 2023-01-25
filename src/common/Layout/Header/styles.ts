@@ -35,10 +35,12 @@ export const Header = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  font-size: 1.8em !important;
-  font-weight: 800;
-
   margin-bottom: 1.5em;
+
+  h1 {
+    font-size: 1.8em !important;
+    font-weight: 800;
+  }
 `;
 
 export const Nav = styled.nav`

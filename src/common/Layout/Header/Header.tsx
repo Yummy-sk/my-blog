@@ -43,10 +43,16 @@ export function Header() {
     },
   ];
 
+  const onClick = () => {
+    router.push(`/`);
+  };
+
   return (
     <S.Container>
       <S.Header>
-        <h1>Yeummy-sk</h1>
+        <button type='button' onClick={onClick}>
+          <h1>Yeummy-sk</h1>
+        </button>
         <ThemeModeToggler />
       </S.Header>
       <S.Nav>
