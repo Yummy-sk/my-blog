@@ -30,7 +30,13 @@ export function PostHeader({ detail }: { detail: PostDetailProps }) {
   const router = useRouter();
 
   const onTagClick = ({ tag }: { tag: string }) => {
-    router.push(`/post?tag=${tag}`).then(() => console.log(''));
+    router.push(`/post?tag=${tag}`).then(() =>
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth',
+      }),
+    );
   };
 
   const onBackClick = () => {
