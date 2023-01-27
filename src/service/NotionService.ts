@@ -47,8 +47,6 @@ class NotionService {
     targetTitle?: string;
   }): Promise<Array<PostListTypes> | null> {
     try {
-      console.log('targettitle');
-      console.log(typeof targetTitle);
       const results = await this.notionQuery({
         filter: {
           and: [
@@ -79,8 +77,6 @@ class NotionService {
           },
         ],
       });
-
-      console.log(results);
 
       return results.map(result => {
         const { id, properties } = result;
