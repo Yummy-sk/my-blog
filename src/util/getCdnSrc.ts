@@ -6,7 +6,7 @@ interface IGetCdnSrc {
   height: number;
 }
 
-export function getCdnSrc({ src, width, height }: IGetCdnSrc) {
+export const getCdnSrc = ({ src, width, height }: IGetCdnSrc) => {
   const imageName = (() => src?.split('/').pop() || '')().replace(
     /.jpg|.png/,
     '',
@@ -35,4 +35,4 @@ export function getCdnSrc({ src, width, height }: IGetCdnSrc) {
       },
     });
   }
-}
+};

@@ -6,13 +6,15 @@ import * as S from './style';
 
 interface Props {
   posts: Array<PostListProps>;
+  keyword: string;
+  onChangeKeyword: ({ keyword }: { keyword: string }) => void;
 }
 
-export function PostList({ posts }: Props) {
+export function PostList({ posts, keyword, onChangeKeyword }: Props) {
   return (
     <S.Container>
       <Transition>
-        <PostOption />
+        <PostOption keyword={keyword} onChangeKeyword={onChangeKeyword} />
         {posts.map(post => (
           <PostSection key={post.id} post={post} />
         ))}

@@ -1,5 +1,7 @@
+import { useState, useCallback } from 'react';
 import { NextPageContext } from 'next';
 import { NotionService } from '@/service';
+import { useDebounce } from '@/hooks';
 import { PostListProps } from '@/types/data';
 import { PostList } from '@/components';
 
@@ -10,8 +12,62 @@ interface Query {
   tag: string | undefined;
 }
 
+interface PostState {
+  keyword: string;
+  posts: Array<PostListProps>;
+}
+
 export default function Page({ posts }: Props) {
-  return <PostList posts={posts} />;
+  const [postState, setPostState] = useState<PostState>({
+    keyword: '',
+    posts,
+  });
+
+  const filterPost = async ({ keyword }: { keyword: string }) => {
+    try {
+      const response = await fetch('/api/post', {
+        method: 'POST',
+        body: JSON.stringify({ search: keyword }),
+      });
+
+      const data = (await response.json()) as Array<PostListProps>;
+
+      setPostState((prev: PostState) => ({
+        ...prev,
+        posts: data,
+      }));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const fetchWithDebounce = useDebounce<{
+    keyword: string;
+  }>({
+    // eslint-disable-next-line @typescript-eslint/no-misused-promises
+    callback: filterPost,
+    delay: 500,
+  });
+
+  const onChangeKeyword = useCallback(
+    ({ keyword }: { keyword: string }) => {
+      setPostState((prev: PostState) => ({
+        ...prev,
+        keyword,
+      }));
+
+      fetchWithDebounce({ keyword });
+    },
+    [fetchWithDebounce],
+  );
+
+  return (
+    <PostList
+      posts={postState.posts}
+      keyword={postState.keyword}
+      onChangeKeyword={onChangeKeyword}
+    />
+  );
 }
 
 export async function getServerSideProps(context: NextPageContext) {
