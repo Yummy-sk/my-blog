@@ -33,8 +33,7 @@ export function PostOption({ keyword, onChangeKeyword }: Props) {
             currentTheme={colorMode}
             onClick={() => {
               router.push('/post');
-            }}
-          >
+            }}>
             All Posts
           </S.Button>
         )}

@@ -77,8 +77,7 @@ export function HomeProfile({ src }: Props) {
               href={href}
               currentTheme={colorMode}
               hoverColor={color}
-              target='_blank'
-            >
+              target='_blank'>
               {getIcon({
                 name,
               })}

@@ -15,8 +15,7 @@ export function Transition({ children }: { children: React.ReactNode }) {
       transition={{ type: 'linear' }}
       style={{
         width: '100%',
-      }}
-    >
+      }}>
       {children}
     </motion.div>
   );

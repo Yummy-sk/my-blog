@@ -69,8 +69,7 @@ export function ContactForm({
             key={name}
             isRequired
             isInvalid={isFocused && !value}
-            mb={5}
-          >
+            mb={5}>
             <FormLabel>{label}</FormLabel>
             <Input
               type={type}
@@ -87,8 +86,7 @@ export function ContactForm({
         <FormControl
           isRequired
           isInvalid={isBlured.message && !values.message}
-          mb={5}
-        >
+          mb={5}>
           <FormLabel>Message</FormLabel>
           <Textarea
             name='message'
@@ -106,8 +104,7 @@ export function ContactForm({
           isLoading={isLoading}
           variant='outline'
           disabled={isLoading}
-          onClick={onSubmit}
-        >
+          onClick={onSubmit}>
           Send message!
         </Button>
       </S.Wrapper>
