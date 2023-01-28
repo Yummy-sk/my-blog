@@ -1,10 +1,22 @@
 import { bundleMDX } from 'mdx-bundler';
+import { SEO } from '@/common';
 import { NotionService } from '@/service';
 import { PostPageProps } from '@/types/data';
 import { Post } from '@/components';
 
 export default function Page({ detail, content }: PostPageProps) {
-  return <Post detail={detail} content={content} />;
+  const { title, description, cover, id } = detail;
+  return (
+    <>
+      <SEO
+        title={title}
+        description={description}
+        url={`https://www.yeummy-blog.com/post/${id}`}
+        image={cover}
+      />
+      <Post detail={detail} content={content} />;
+    </>
+  );
 }
 export async function getStaticProps({
   params: { slug },

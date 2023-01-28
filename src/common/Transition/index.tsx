@@ -13,6 +13,9 @@ export function Transition({ children }: { children: React.ReactNode }) {
       animate='enter'
       exit='exit'
       transition={{ type: 'linear' }}
+      style={{
+        width: '100%',
+      }}
     >
       {children}
     </motion.div>

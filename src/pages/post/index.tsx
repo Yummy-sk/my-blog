@@ -1,5 +1,6 @@
 import { useEffect, useState, useCallback } from 'react';
 import { NextPageContext } from 'next';
+import { Transition, SEO } from '@/common';
 import { NotionService } from '@/service';
 import { useDebounce } from '@/hooks';
 import { PostListProps } from '@/types/data';
@@ -19,6 +20,7 @@ interface PostState {
 }
 
 export default function Page({ posts, tag }: Props) {
+  const image = process.env.NEXT_PUBLIC_PROFILE_URL || '';
   const [postState, setPostState] = useState<PostState>({
     keyword: '',
     posts,
@@ -70,11 +72,21 @@ export default function Page({ posts, tag }: Props) {
   }, [posts]);
 
   return (
-    <PostList
-      posts={postState.posts}
-      keyword={postState.keyword}
-      onChangeKeyword={onChangeKeyword}
-    />
+    <>
+      <SEO
+        title='Posts'
+        description='안녕하세요 프론트앤드 개발자 염상권입니다. 경험과 공부한 내용을 기록하는 블로그입니다.'
+        url='https://www.yeummy-blog.com/post'
+        image={image}
+      />
+      <Transition>
+        <PostList
+          posts={postState.posts}
+          keyword={postState.keyword}
+          onChangeKeyword={onChangeKeyword}
+        />
+      </Transition>
+    </>
   );
 }
 
