@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { NextPageContext } from 'next';
 import { NotionService } from '@/service';
 import { useDebounce } from '@/hooks';
@@ -60,6 +60,13 @@ export default function Page({ posts }: Props) {
     },
     [fetchWithDebounce],
   );
+
+  useEffect(() => {
+    setPostState((prev: PostState) => ({
+      ...prev,
+      posts,
+    }));
+  }, [posts]);
 
   return (
     <PostList
