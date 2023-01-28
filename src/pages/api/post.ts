@@ -18,6 +18,7 @@ async function apiHandler(req: IResponse, res: NextApiResponse) {
 
     const response = await notionService.getPosts({
       targetTitle: body.search || '',
+      targetTag: body.tag || '',
     });
 
     return res.status(200).json(response);

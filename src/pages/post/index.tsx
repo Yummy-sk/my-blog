@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { NextPageContext } from 'next';
 import { NotionService } from '@/service';
 import { useDebounce } from '@/hooks';
@@ -7,6 +7,7 @@ import { PostList } from '@/components';
 
 interface Props {
   posts: Array<PostListProps>;
+  tag: string;
 }
 interface Query {
   tag: string | undefined;
@@ -17,7 +18,7 @@ interface PostState {
   posts: Array<PostListProps>;
 }
 
-export default function Page({ posts }: Props) {
+export default function Page({ posts, tag }: Props) {
   const [postState, setPostState] = useState<PostState>({
     keyword: '',
     posts,
@@ -27,7 +28,7 @@ export default function Page({ posts }: Props) {
     try {
       const response = await fetch('/api/post', {
         method: 'POST',
-        body: JSON.stringify({ search: keyword }),
+        body: JSON.stringify({ search: keyword, tag }),
       });
 
       const data = (await response.json()) as Array<PostListProps>;
@@ -79,8 +80,9 @@ export default function Page({ posts }: Props) {
 
 export async function getServerSideProps(context: NextPageContext) {
   const { tag } = context.query as unknown as Query;
+  const targetTag = tag?.trim() || '';
   const notionService = new NotionService();
-  const posts = await notionService.getPosts({ targetTag: tag?.trim() });
+  const posts = await notionService.getPosts({ targetTag });
 
   if (!posts) {
     // Note: 에러가 발생했을 경우, 에러 페이지로 리다이렉트 합니다.
@@ -95,6 +97,7 @@ export async function getServerSideProps(context: NextPageContext) {
   return {
     props: {
       posts,
+      tag: targetTag,
     },
   };
 }
