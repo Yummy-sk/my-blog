@@ -38,8 +38,7 @@ export function BlogOption({ keyword, onChangeKeyword }: Props) {
             currentTheme={colorMode}
             onClick={() => {
               router.push('/blog/all');
-            }}
-          >
+            }}>
             All Posts
           </S.Button>
         )}
