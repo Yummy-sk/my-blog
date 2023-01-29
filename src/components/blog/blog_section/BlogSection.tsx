@@ -14,7 +14,7 @@ function Tag({ tag, currentTheme }: TagProps) {
   const router = useRouter();
 
   const onClick = () => {
-    router.push(`/blog?tag=${tag}`);
+    router.push(`/blog/${tag}`);
   };
 
   return (

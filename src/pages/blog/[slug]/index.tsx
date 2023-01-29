@@ -1,5 +1,4 @@
-import { useEffect, useState, useCallback } from 'react';
-import { useRouter } from 'next/router';
+import { useState, useCallback } from 'react';
 import { Transition, SEO } from '@/common';
 import { NotionService } from '@/service';
 import { useDebounce } from '@/hooks';
@@ -16,16 +15,7 @@ interface BlogState {
   posts: Array<BlogListProps>;
 }
 
-const parseTag = ({ tag }: { tag: string | string[] | undefined }) => {
-  if (typeof tag === 'string') {
-    return tag.trim();
-  }
-
-  return '';
-};
-
 export default function Page({ posts }: Props) {
-  const router = useRouter();
   const image = process.env.NEXT_PUBLIC_PROFILE_URL || '';
   const [blogState, setBlogState] = useState<BlogState>({
     keyword: '',
@@ -75,22 +65,6 @@ export default function Page({ posts }: Props) {
     [fetchWithDebounce, blogState.tag],
   );
 
-  useEffect(() => {
-    const currentTag = parseTag({
-      tag: router.query.tag,
-    });
-
-    // NOTE: 태그가 변경되면 조건에 맞는 포스트를 가져온다.
-    if (blogState.tag !== currentTag) {
-      fetchPost({ keyword: '', tag: currentTag });
-
-      setBlogState((prev: BlogState) => ({
-        ...prev,
-        tag: currentTag,
-      }));
-    }
-  }, [fetchPost, blogState.tag, router.query.tag]);
-
   return (
     <>
       <SEO
@@ -110,9 +84,15 @@ export default function Page({ posts }: Props) {
   );
 }
 
-export async function getStaticProps() {
+export async function getStaticProps({
+  params: { slug },
+}: {
+  params: { slug: string };
+}) {
   const notionService = new NotionService();
-  const posts = await notionService.getPosts({});
+  const posts = await notionService.getPosts({
+    targetTag: slug === 'all' ? '' : slug,
+  });
 
   if (!posts) {
     // Note: 에러가 발생했을 경우, 에러 페이지로 리다이렉트 합니다.
@@ -130,5 +110,29 @@ export async function getStaticProps() {
     },
     // NOTE: Incremental Static Regeneration
     revalidate: 1000,
+  };
+}
+
+export async function getStaticPaths() {
+  const notionService = new NotionService();
+  const tags = await notionService.getPostTags();
+
+  if (!tags) {
+    // Note: 에러가 발생했을 경우, 에러 페이지로 리다이렉트 합니다.
+    return {
+      redirect: {
+        destination: '/error',
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    paths: ['all', ...tags].map(tag => ({
+      params: {
+        slug: tag,
+      },
+    })),
+    fallback: false,
   };
 }

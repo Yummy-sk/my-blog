@@ -123,6 +123,43 @@ class NotionService {
     }
   }
 
+  async getPostTags() {
+    try {
+      const results = await this.notionQuery({
+        filter: {
+          and: [
+            {
+              property: 'published',
+              checkbox: {
+                equals: true,
+              },
+            },
+          ],
+        },
+        sorts: [
+          {
+            property: 'created_time',
+            direction: 'descending',
+          },
+        ],
+      });
+
+      const tags = results.map(result => {
+        const { properties } = result;
+
+        return parseData({ properties }).tags;
+      });
+
+      return tags
+        .flat()
+        .filter((tag, index, self) => self.indexOf(tag) === index);
+    } catch (error) {
+      console.error(error);
+
+      return null;
+    }
+  }
+
   // Note: notion 페에지의 상세 정보를 가져옵니다.
   async getPostDetail(id: string) {
     try {

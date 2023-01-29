@@ -32,7 +32,7 @@ export function BlogOption({ keyword, onChangeKeyword }: Props) {
           <S.Button
             currentTheme={colorMode}
             onClick={() => {
-              router.push('/blog');
+              router.push('/blog/all');
             }}
           >
             All Posts

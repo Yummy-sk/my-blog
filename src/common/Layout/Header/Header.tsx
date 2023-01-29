@@ -34,7 +34,7 @@ export function Header() {
     {
       key: nanoid(),
       name: 'Blog',
-      path: '/blog',
+      path: '/blog/all',
     },
     {
       key: nanoid(),
