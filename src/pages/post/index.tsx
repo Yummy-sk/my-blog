@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from 'react';
-import { NextPageContext } from 'next';
+import { useRouter } from 'next/router';
 import { Transition, SEO } from '@/common';
 import { NotionService } from '@/service';
 import { useDebounce } from '@/hooks';
@@ -8,47 +8,58 @@ import { PostList } from '@/components';
 
 interface Props {
   posts: Array<PostListProps>;
-  tag: string;
-}
-interface Query {
-  tag: string | undefined;
 }
 
 interface PostState {
   keyword: string;
+  tag: string;
   posts: Array<PostListProps>;
 }
 
-export default function Page({ posts, tag }: Props) {
+const parseTag = (tag: string | string[] | undefined) => {
+  if (typeof tag === 'string') {
+    return tag.trim();
+  }
+
+  return '';
+};
+
+export default function Page({ posts }: Props) {
+  const router = useRouter();
   const image = process.env.NEXT_PUBLIC_PROFILE_URL || '';
   const [postState, setPostState] = useState<PostState>({
     keyword: '',
+    tag: '',
     posts,
   });
 
-  const filterPost = async ({ keyword }: { keyword: string }) => {
-    try {
-      const response = await fetch('/api/post', {
-        method: 'POST',
-        body: JSON.stringify({ search: keyword, tag }),
-      });
+  const fetchPost = useCallback(
+    async ({ keyword, tag }: { keyword: string; tag: string }) => {
+      try {
+        const response = await fetch('/api/post', {
+          method: 'POST',
+          body: JSON.stringify({ search: keyword, tag }),
+        });
 
-      const data = (await response.json()) as Array<PostListProps>;
+        const data = (await response.json()) as Array<PostListProps>;
 
-      setPostState((prev: PostState) => ({
-        ...prev,
-        posts: data,
-      }));
-    } catch (error) {
-      console.error(error);
-    }
-  };
+        setPostState((prev: PostState) => ({
+          ...prev,
+          posts: data,
+        }));
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    [],
+  );
 
   const fetchWithDebounce = useDebounce<{
     keyword: string;
+    tag: string;
   }>({
     // eslint-disable-next-line @typescript-eslint/no-misused-promises
-    callback: filterPost,
+    callback: fetchPost,
     delay: 500,
   });
 
@@ -59,17 +70,24 @@ export default function Page({ posts, tag }: Props) {
         keyword,
       }));
 
-      fetchWithDebounce({ keyword });
+      fetchWithDebounce({ keyword, tag: postState.tag });
     },
-    [fetchWithDebounce],
+    [fetchWithDebounce, postState.tag],
   );
 
   useEffect(() => {
-    setPostState((prev: PostState) => ({
-      ...prev,
-      posts,
-    }));
-  }, [posts]);
+    const currentTag = parseTag(router.query.tag);
+
+    // NOTE: 태그가 변경되면 조건에 맞는 포스트를 가져온다.
+    if (postState.tag !== currentTag) {
+      fetchPost({ keyword: '', tag: currentTag });
+
+      setPostState((prev: PostState) => ({
+        ...prev,
+        tag: currentTag,
+      }));
+    }
+  }, [fetchPost, postState.tag, router.query.tag]);
 
   return (
     <>
@@ -90,11 +108,10 @@ export default function Page({ posts, tag }: Props) {
   );
 }
 
-export async function getServerSideProps(context: NextPageContext) {
-  const { tag } = context.query as unknown as Query;
-  const targetTag = tag?.trim() || '';
+export async function getStaticProps() {
+  // const { tag } = context.query as unknown as Query;
   const notionService = new NotionService();
-  const posts = await notionService.getPosts({ targetTag });
+  const posts = await notionService.getPosts({});
 
   if (!posts) {
     // Note: 에러가 발생했을 경우, 에러 페이지로 리다이렉트 합니다.
@@ -109,7 +126,7 @@ export async function getServerSideProps(context: NextPageContext) {
   return {
     props: {
       posts,
-      tag: targetTag,
     },
+    revalidate: 1000,
   };
 }
