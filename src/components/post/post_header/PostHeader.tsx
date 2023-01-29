@@ -30,7 +30,7 @@ export function PostHeader({ detail }: { detail: BlogDetailProps }) {
   const router = useRouter();
 
   const onTagClick = ({ tag }: { tag: string }) => {
-    router.push(`/post?tag=${tag}`);
+    router.push(`/blog/${tag}`);
   };
 
   const onBackClick = () => {
