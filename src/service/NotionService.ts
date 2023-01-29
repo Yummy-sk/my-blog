@@ -5,7 +5,7 @@ import {
 } from '@notionhq/client/build/src/api-endpoints';
 import { NotionToMarkdown } from 'notion-to-md';
 import { getCoverImg, parseData } from '@/util';
-import { CoverImageResponse, PostListTypes } from '@/types/data';
+import { CoverImageResponse, BlogListTypes } from '@/types/data';
 
 class NotionService {
   private notion: Client;
@@ -45,7 +45,7 @@ class NotionService {
   }: {
     targetTag?: string;
     targetTitle?: string;
-  }): Promise<Array<PostListTypes> | null> {
+  }): Promise<Array<BlogListTypes> | null> {
     try {
       const results = await this.notionQuery({
         filter: {

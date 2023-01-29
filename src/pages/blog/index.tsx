@@ -3,17 +3,17 @@ import { useRouter } from 'next/router';
 import { Transition, SEO } from '@/common';
 import { NotionService } from '@/service';
 import { useDebounce } from '@/hooks';
-import { PostListProps } from '@/types/data';
-import { PostList } from '@/components';
+import { BlogListProps } from '@/types/data';
+import { BlogList } from '@/components';
 
 interface Props {
-  posts: Array<PostListProps>;
+  posts: Array<BlogListProps>;
 }
 
-interface PostState {
+interface BlogState {
   keyword: string;
   tag: string;
-  posts: Array<PostListProps>;
+  posts: Array<BlogListProps>;
 }
 
 const parseTag = ({ tag }: { tag: string | string[] | undefined }) => {
@@ -27,7 +27,7 @@ const parseTag = ({ tag }: { tag: string | string[] | undefined }) => {
 export default function Page({ posts }: Props) {
   const router = useRouter();
   const image = process.env.NEXT_PUBLIC_PROFILE_URL || '';
-  const [postState, setPostState] = useState<PostState>({
+  const [blogState, setBlogState] = useState<BlogState>({
     keyword: '',
     tag: '',
     posts,
@@ -41,9 +41,9 @@ export default function Page({ posts }: Props) {
           body: JSON.stringify({ search: keyword, tag }),
         });
 
-        const data = (await response.json()) as Array<PostListProps>;
+        const data = (await response.json()) as Array<BlogListProps>;
 
-        setPostState((prev: PostState) => ({
+        setBlogState((prev: BlogState) => ({
           ...prev,
           posts: data,
         }));
@@ -65,14 +65,14 @@ export default function Page({ posts }: Props) {
 
   const onChangeKeyword = useCallback(
     ({ keyword }: { keyword: string }) => {
-      setPostState((prev: PostState) => ({
+      setBlogState((prev: BlogState) => ({
         ...prev,
         keyword,
       }));
 
-      fetchWithDebounce({ keyword, tag: postState.tag });
+      fetchWithDebounce({ keyword, tag: blogState.tag });
     },
-    [fetchWithDebounce, postState.tag],
+    [fetchWithDebounce, blogState.tag],
   );
 
   useEffect(() => {
@@ -81,28 +81,28 @@ export default function Page({ posts }: Props) {
     });
 
     // NOTE: 태그가 변경되면 조건에 맞는 포스트를 가져온다.
-    if (postState.tag !== currentTag) {
+    if (blogState.tag !== currentTag) {
       fetchPost({ keyword: '', tag: currentTag });
 
-      setPostState((prev: PostState) => ({
+      setBlogState((prev: BlogState) => ({
         ...prev,
         tag: currentTag,
       }));
     }
-  }, [fetchPost, postState.tag, router.query.tag]);
+  }, [fetchPost, blogState.tag, router.query.tag]);
 
   return (
     <>
       <SEO
-        title='Posts'
+        title='Blog'
         description='안녕하세요 프론트앤드 개발자 염상권입니다. 경험과 공부한 내용을 기록하는 블로그입니다.'
-        url='https://www.yeummy-blog.com/post'
+        url='https://www.yeummy-blog.com/blog'
         image={image}
       />
       <Transition>
-        <PostList
-          posts={postState.posts}
-          keyword={postState.keyword}
+        <BlogList
+          posts={blogState.posts}
+          keyword={blogState.keyword}
           onChangeKeyword={onChangeKeyword}
         />
       </Transition>

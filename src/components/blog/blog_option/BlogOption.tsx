@@ -1,14 +1,14 @@
 import { useRouter } from 'next/router';
 import { Input, useColorMode } from '@chakra-ui/react';
 import { parseTagString } from '@/util';
-import * as S from './PostOption.style';
+import * as S from './BlogOption.style';
 
 interface Props {
   keyword: string;
   onChangeKeyword: ({ keyword }: { keyword: string }) => void;
 }
 
-export function PostOption({ keyword, onChangeKeyword }: Props) {
+export function BlogOption({ keyword, onChangeKeyword }: Props) {
   const router = useRouter();
   const { colorMode } = useColorMode();
 
@@ -32,8 +32,9 @@ export function PostOption({ keyword, onChangeKeyword }: Props) {
           <S.Button
             currentTheme={colorMode}
             onClick={() => {
-              router.push('/post');
-            }}>
+              router.push('/blog');
+            }}
+          >
             All Posts
           </S.Button>
         )}
