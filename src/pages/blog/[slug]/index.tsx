@@ -75,7 +75,7 @@ export default function Page({ posts, tag }: Props) {
       <SEO
         title='Blog'
         description='안녕하세요 프론트앤드 개발자 염상권입니다. 경험과 공부한 내용을 기록하는 블로그입니다.'
-        url='https://www.yeummy-blog.com/blog'
+        url={`https://www.yeummy-blog.com/blog/${tag}`}
         image={image}
       />
       <Transition>
