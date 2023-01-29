@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { Transition, SEO } from '@/common';
 import { NotionService } from '@/service';
 import { useDebounce } from '@/hooks';
@@ -7,24 +7,23 @@ import { BlogList } from '@/components';
 
 interface Props {
   posts: Array<BlogListProps>;
+  tag: string;
 }
 
 interface BlogState {
   keyword: string;
-  tag: string;
   posts: Array<BlogListProps>;
 }
 
-export default function Page({ posts }: Props) {
+export default function Page({ posts, tag }: Props) {
   const image = process.env.NEXT_PUBLIC_PROFILE_URL || '';
   const [blogState, setBlogState] = useState<BlogState>({
     keyword: '',
-    tag: '',
     posts,
   });
 
   const fetchPost = useCallback(
-    async ({ keyword, tag }: { keyword: string; tag: string }) => {
+    async ({ keyword }: { keyword: string }) => {
       try {
         const response = await fetch('/api/post', {
           method: 'POST',
@@ -41,12 +40,11 @@ export default function Page({ posts }: Props) {
         console.error(error);
       }
     },
-    [],
+    [tag],
   );
 
   const fetchWithDebounce = useDebounce<{
     keyword: string;
-    tag: string;
   }>({
     // eslint-disable-next-line @typescript-eslint/no-misused-promises
     callback: fetchPost,
@@ -60,10 +58,17 @@ export default function Page({ posts }: Props) {
         keyword,
       }));
 
-      fetchWithDebounce({ keyword, tag: blogState.tag });
+      fetchWithDebounce({ keyword });
     },
-    [fetchWithDebounce, blogState.tag],
+    [fetchWithDebounce],
   );
+
+  useEffect(() => {
+    setBlogState((prev: BlogState) => ({
+      ...prev,
+      posts,
+    }));
+  }, [posts]);
 
   return (
     <>
@@ -107,6 +112,7 @@ export async function getStaticProps({
   return {
     props: {
       posts,
+      tag: slug === 'all' ? '' : slug,
     },
     // NOTE: Incremental Static Regeneration
     revalidate: 1000,

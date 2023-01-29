@@ -12,23 +12,28 @@ export function BlogOption({ keyword, onChangeKeyword }: Props) {
   const router = useRouter();
   const { colorMode } = useColorMode();
 
-  const {
-    query: { tag },
-  } = router;
+  const getCurrentPath = ({ asPath }: { asPath: string }) => {
+    const path = asPath.split('/');
+    return path[path.length - 1];
+  };
 
-  const getTitle = () => {
-    if (tag && typeof tag === 'string') {
-      return parseTagString({ tag });
+  const getTitle = ({ currentPath }: { currentPath: string }) => {
+    if (currentPath === 'all' || typeof currentPath !== 'string') {
+      return 'All Posts';
     }
 
-    return 'All Posts';
+    return parseTagString({ tag: currentPath });
   };
+
+  const currentTitle = getTitle({
+    currentPath: getCurrentPath({ asPath: router.asPath }),
+  });
 
   return (
     <S.Container>
       <S.Row>
-        <S.Title>{getTitle()}</S.Title>
-        {getTitle() !== 'All Posts' && (
+        <S.Title>{currentTitle}</S.Title>
+        {currentTitle !== 'All Posts' && (
           <S.Button
             currentTheme={colorMode}
             onClick={() => {
