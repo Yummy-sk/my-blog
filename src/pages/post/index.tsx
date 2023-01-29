@@ -16,7 +16,7 @@ interface PostState {
   posts: Array<PostListProps>;
 }
 
-const parseTag = (tag: string | string[] | undefined) => {
+const parseTag = ({ tag }: { tag: string | string[] | undefined }) => {
   if (typeof tag === 'string') {
     return tag.trim();
   }
@@ -76,7 +76,9 @@ export default function Page({ posts }: Props) {
   );
 
   useEffect(() => {
-    const currentTag = parseTag(router.query.tag);
+    const currentTag = parseTag({
+      tag: router.query.tag,
+    });
 
     // NOTE: 태그가 변경되면 조건에 맞는 포스트를 가져온다.
     if (postState.tag !== currentTag) {
@@ -109,7 +111,6 @@ export default function Page({ posts }: Props) {
 }
 
 export async function getStaticProps() {
-  // const { tag } = context.query as unknown as Query;
   const notionService = new NotionService();
   const posts = await notionService.getPosts({});
 
@@ -127,6 +128,7 @@ export async function getStaticProps() {
     props: {
       posts,
     },
+    // NOTE: Incremental Static Regeneration
     revalidate: 1000,
   };
 }
