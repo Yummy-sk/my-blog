@@ -1,48 +1,19 @@
-import { useState } from 'react';
-import { useColorMode } from '@chakra-ui/react';
-import { useHeadingData, useIntersectionObserver } from '@/hooks';
-import { TocItem } from '@/types/content';
-import * as S from './TableOfContents.style';
-
-function Headings({
-  headings,
-  activeId,
-}: {
-  headings: Array<TocItem>;
-  activeId: string;
-}) {
-  const { colorMode } = useColorMode();
-
-  return (
-    <S.HeadingContainer currentTheme={colorMode}>
-      {headings.map(heading => (
-        <li
-          key={heading.id}
-          className={heading.id === activeId ? 'active' : ''}
-        >
-          <a href={`#${heading.id}`}>{heading.title}</a>
-          {heading.children.length ? (
-            <Headings headings={heading.children} activeId={activeId} />
-          ) : null}
-        </li>
-      ))}
-    </S.HeadingContainer>
-  );
-}
+import { DesktopTableOfContents } from '@/components/post/table_of_content/desktop/DesktopTableOfContents';
+import { MobileTableOfContents } from '@/components/post/table_of_content/mobile/MobileTableOfContents';
+import { useHeadingData, useScreeType } from '@/hooks';
 
 export function TableOfContents() {
-  const [activeId, setActiveId] = useState<string>('');
   const { headings } = useHeadingData();
 
-  useIntersectionObserver({
-    setActiveId,
-  });
+  const type = useScreeType();
 
   return (
-    <S.Container>
-      <S.Wrapper>
-        <Headings headings={headings} activeId={activeId} />
-      </S.Wrapper>
-    </S.Container>
+    <nav>
+      {type === 'desktop' ? (
+        <DesktopTableOfContents headings={headings} />
+      ) : (
+        <MobileTableOfContents headings={headings} />
+      )}
+    </nav>
   );
 }

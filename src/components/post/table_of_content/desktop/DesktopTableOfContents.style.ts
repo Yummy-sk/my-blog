@@ -21,7 +21,6 @@ export const HeadingContainer = styled.ul<{ currentTheme: ColorMode }>`
   list-style: disc;
   font-size: 0.7rem;
   color: ${({ theme }) => theme.colors.lightGray};
-  transition: color 0.5s ease-in-out;
 
   li {
     margin: 0.5rem 0;

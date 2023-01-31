@@ -8,8 +8,8 @@ import * as S from './style';
 export function Post({ detail, content }: BlogPageProps) {
   return (
     <S.Container>
-      <TableOfContents />
       <PostHeader detail={detail} />
+      <TableOfContents />
       <PostContent content={content} />
       <PostComment />
     </S.Container>
