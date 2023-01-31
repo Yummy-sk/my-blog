@@ -112,8 +112,7 @@ function Pre(props: PreProps) {
           fontSize: '0.8rem',
           fontWeight: 600,
         },
-      }}
-    >
+      }}>
       {code}
     </SyntaxHighlighter>
   );

@@ -18,8 +18,7 @@ function DesktopHeadings({
       {headings.map(heading => (
         <li
           key={heading.id}
-          className={heading.id === activeId ? 'active' : ''}
-        >
+          className={heading.id === activeId ? 'active' : ''}>
           <a href={`#${heading.id}`}>{heading.title}</a>
           {heading.children.length ? (
             <DesktopHeadings headings={heading.children} activeId={activeId} />

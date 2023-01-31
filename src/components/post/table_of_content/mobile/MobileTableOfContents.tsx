@@ -47,8 +47,7 @@ export function MobileTableOfContents({
       <Accordion
         allowToggle
         background={colorMode === 'light' ? 'gray.200' : 'gray.600'}
-        borderRadius='md'
-      >
+        borderRadius='md'>
         <AccordionItem>
           <AccordionButton>
             <Box as='span' flex='1' textAlign='left'>
