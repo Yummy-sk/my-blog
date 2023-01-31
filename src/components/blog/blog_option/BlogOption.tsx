@@ -49,8 +49,7 @@ export function BlogOption({
             currentTheme={colorMode}
             onClick={() => {
               router.push('/blog/all');
-            }}
-          >
+            }}>
             All Posts
           </S.Button>
         )}
@@ -58,8 +57,7 @@ export function BlogOption({
 
       <S.Form
         currentTheme={colorMode}
-        onSubmit={e => onSubmitKeyword({ e, keyword })}
-      >
+        onSubmit={e => onSubmitKeyword({ e, keyword })}>
         <Input
           placeholder='Search Keyword'
           width='100%'
