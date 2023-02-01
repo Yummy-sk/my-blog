@@ -43,8 +43,7 @@ class MyDocument extends Document {
       <Html
         lang='ko'
         className='scroll-smooth'
-        style={{ scrollBehavior: 'smooth' }}
-      >
+        style={{ scrollBehavior: 'smooth' }}>
         <Head />
         <body>
           <Main />
