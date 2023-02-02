@@ -4,14 +4,14 @@ import { NotionService } from '@/service';
 import { BlogListProps, BlogState } from '@/types/data';
 
 const BlogList = dynamic(() =>
-  import('@/components').then(mod => mod.BlogList),
+  import('@/components/blog').then(mod => mod.BlogList),
 );
 
 const Transition = dynamic(() =>
-  import('@/common').then(mod => mod.Transition),
+  import('@/common/Transition').then(mod => mod.Transition),
 );
 
-const SEO = dynamic(() => import('@/common').then(mod => mod.SEO));
+const SEO = dynamic(() => import('@/common/SEO').then(mod => mod.SEO));
 
 interface Props {
   posts: Array<BlogListProps>;

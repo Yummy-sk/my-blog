@@ -1,7 +1,7 @@
 import daynamic from 'next/dynamic';
 
 const NotFound = daynamic(() =>
-  import('@/components').then(mod => mod.NotFound),
+  import('@/components/not_found').then(mod => mod.NotFound),
 );
 
 export default function Page() {

@@ -1,13 +1,13 @@
 import dynamic from 'next/dynamic';
 import { generateRSS } from '@/util/generateRSS';
 
-const Home = dynamic(() => import('@/components').then(mod => mod.Home));
+const Home = dynamic(() => import('@/components/home').then(mod => mod.Home));
 
 const Transition = dynamic(() =>
-  import('@/common').then(mod => mod.Transition),
+  import('@/common/Transition').then(mod => mod.Transition),
 );
 
-const SEO = dynamic(() => import('@/common').then(mod => mod.SEO));
+const SEO = dynamic(() => import('@/common/SEO').then(mod => mod.SEO));
 
 interface Props {
   src: string;
