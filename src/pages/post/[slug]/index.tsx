@@ -1,8 +1,10 @@
 import { bundleMDX } from 'mdx-bundler';
+import dynamic from 'next/dynamic';
 import { SEO } from '@/common';
 import { NotionService } from '@/service';
 import { BlogPageProps } from '@/types/data';
-import { Post } from '@/components';
+
+const Post = dynamic(() => import('@/components').then(mod => mod.Post));
 
 export default function Page({ detail, content }: BlogPageProps) {
   const { title, description, cover, id } = detail;

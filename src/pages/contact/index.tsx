@@ -1,5 +1,7 @@
-import { Contact } from '@/components';
+import dynamic from 'next/dynamic';
 import { Transition, SEO } from '@/common';
+
+const Contact = dynamic(() => import('@/components').then(mod => mod.Contact));
 
 export default function Page() {
   const imageSrc = process.env.NEXT_PUBLIC_PROFILE_URL || '';
