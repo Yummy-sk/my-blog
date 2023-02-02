@@ -21,6 +21,7 @@
     "@chakra-ui/react": "^2.4.9",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "@next/bundle-analyzer": "^13.1.6",
     "@next/font": "^13.1.4",
     "@notionhq/client": "^2.2.3",
     "@types/node": "18.11.18",
