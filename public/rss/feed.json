@@ -11,6 +11,18 @@
     },
     "items": [
         {
+            "url": "https://www.yeummy-blog.com/blog/80285a63-730b-4cd7-94eb-399af12b994e",
+            "title": "React Native는 어떻게 동작할까?",
+            "summary": "React Native 동작 구성과 New architecture에 대해 알아봅시다.",
+            "date_modified": "2023-03-26T00:00:00.000Z"
+        },
+        {
+            "url": "https://www.yeummy-blog.com/blog/92d47ec2-a0e9-42b3-b756-8c63a9e82ca3",
+            "title": "Automatic batching for fewer renders in React 18 - 번역",
+            "summary": "react 18 부터 업데이트된 batching 처리에 대해 알아봅시다.",
+            "date_modified": "2023-02-26T00:00:00.000Z"
+        },
+        {
             "url": "https://www.yeummy-blog.com/blog/15b4562d-d30f-4cdd-aac5-6bc54b5d9dbf",
             "title": "글또를 시작하며..",
             "summary": "글또를 시작하기 전 다짐",
