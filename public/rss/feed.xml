@@ -4,7 +4,7 @@
         <title>Yeummy-sk Blog</title>
         <link>https://www.yeummy-blog.com/</link>
         <description>성장을 위해 노력하는 개발자 염상권의 블로그입니다.</description>
-        <lastBuildDate>Sun, 26 Mar 2023 10:27:31 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 07 May 2023 10:59:04 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>Feed for Node.js</generator>
         <image>
@@ -13,6 +13,13 @@
             <link>https://www.yeummy-blog.com/</link>
         </image>
         <copyright>All rights reserved 2023, Jatin Sharma</copyright>
+        <item>
+            <title><![CDATA[패턴 매칭이란?]]></title>
+            <link>https://www.yeummy-blog.com/blog/51072183-7c63-416b-af95-101cf9e1ac9f</link>
+            <guid>https://www.yeummy-blog.com/blog/51072183-7c63-416b-af95-101cf9e1ac9f</guid>
+            <pubDate>Sun, 07 May 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[패턴 매칭에 대해 알아봅니다.]]></description>
+        </item>
         <item>
             <title><![CDATA[React Native는 어떻게 동작할까?]]></title>
             <link>https://www.yeummy-blog.com/blog/80285a63-730b-4cd7-94eb-399af12b994e</link>

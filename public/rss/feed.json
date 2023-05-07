@@ -11,6 +11,12 @@
     },
     "items": [
         {
+            "url": "https://www.yeummy-blog.com/blog/51072183-7c63-416b-af95-101cf9e1ac9f",
+            "title": "패턴 매칭이란?",
+            "summary": "패턴 매칭에 대해 알아봅니다.",
+            "date_modified": "2023-05-07T00:00:00.000Z"
+        },
+        {
             "url": "https://www.yeummy-blog.com/blog/80285a63-730b-4cd7-94eb-399af12b994e",
             "title": "React Native는 어떻게 동작할까?",
             "summary": "React Native 동작 구성과 New architecture에 대해 알아봅시다.",
