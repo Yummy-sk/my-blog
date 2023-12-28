@@ -1,9 +1,10 @@
 import clsx from 'clsx';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import Provider from '@/components/providers';
+import Provider from '@/providers';
 import './globals.css';
 import Header from '@/components/header';
+import Footer from '@/components/footer';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -26,9 +27,12 @@ export default function RootLayout({ children }: Props) {
         )}
       >
         <Provider>
-          <div className="bg-white w-full max-w-6xl ring-1 ring-zinc-100 dark:bg-zinc-900 dark:ring-zinc-300/20">
+          <div className="flex flex-col justify-between relative bg-white w-full max-w-6xl ring-1 ring-zinc-100 dark:bg-zinc-900 dark:ring-zinc-300/20">
             <Header />
-            {children}
+            <main className="px-4 sm:px-8 lg:px-12 mt-16 sm:mt-32">
+              {children}
+            </main>
+            <Footer />
           </div>
         </Provider>
       </body>
