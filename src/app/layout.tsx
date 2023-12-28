@@ -29,7 +29,7 @@ export default function RootLayout({ children }: Props) {
         <Provider>
           <div className="flex flex-col justify-between relative bg-white w-full max-w-6xl ring-1 ring-zinc-100 dark:bg-zinc-900 dark:ring-zinc-300/20">
             <Header />
-            <main className="px-4 sm:px-8 lg:px-12 mt-16 sm:mt-32">
+            <main className="flex-1 px-4 sm:px-8 lg:px-12 mt-16 sm:mt-32">
               {children}
             </main>
             <Footer />
