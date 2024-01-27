@@ -6,15 +6,24 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "introspect": "supabase gen types typescript --linked >src/types/supabase.ts"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.17",
+    "@supabase/supabase-js": "^2.39.1",
     "clsx": "^2.0.0",
+    "fp-ts": "^2.16.2",
     "next": "14.0.4",
+    "next-mdx-remote": "^4.4.1",
     "next-themes": "^0.2.1",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "rehype-autolink-headings": "^7.1.0",
+    "rehype-pretty-code": "^0.12.6",
+    "remark-gfm": "3.0.1",
+    "shikiji": "^0.9.0",
+    "ts-pattern": "^5.0.6"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.10",
