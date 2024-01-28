@@ -27,7 +27,9 @@ export default function Footer() {
             <NavLink href="/tags">Tags</NavLink>
           </div>
           <p className="text-sm text-zinc-400 dark:text-zinc-500">
-            &copy; {new Date().getFullYear()} SangKwon Yeum. All rights
+            &copy;
+            {new Date().getFullYear()}
+            SangKwon Yeum. All rights
             reserved.
           </p>
         </div>

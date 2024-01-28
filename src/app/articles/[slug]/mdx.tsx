@@ -4,8 +4,8 @@ import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote';
 
 interface Props {
   mdxSource: MDXRemoteSerializeResult<
-    Record<string, unknown>,
-    Record<string, unknown>
+  Record<string, unknown>,
+  Record<string, unknown>
   >;
 }
 

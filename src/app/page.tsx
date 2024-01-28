@@ -2,12 +2,7 @@ import { type Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import clsx from 'clsx';
-import {
-  GitHubIcon,
-  InstagramIcon,
-  LinkedInIcon,
-  TwitterIcon,
-} from '@/components/icons';
+import { GitHubIcon, InstagramIcon, LinkedInIcon } from '@/components/icons';
 import portraitImage from '@/images/portrait.jpg';
 
 interface SocialProps {
@@ -45,7 +40,7 @@ function MailIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
 export const metadata: Metadata = {
   title: 'About',
   description:
-    'Hi! I’m Spencer Sharp. I live in New York City, where I design the future.',
+    'Hi! I’m Sang Kwon Yeum.  I’m a Front End Developer located in Korea. I’m interested in UI effects, animations and creating intuitive, dynamic user experiences.',
 };
 
 export default function Page() {
@@ -122,13 +117,18 @@ export default function Page() {
       </div>
       <div className="lg:pl-20">
         <ul>
-          <SocialLink href="#" icon={TwitterIcon}>
-            Twitter
-          </SocialLink>
-          <SocialLink href="#" icon={InstagramIcon} className="mt-4">
+          <SocialLink
+            href="https://www.instagram.com"
+            icon={InstagramIcon}
+            className="mt-4"
+          >
             Instagram
           </SocialLink>
-          <SocialLink href="#" icon={GitHubIcon} className="mt-4">
+          <SocialLink
+            href="https://github.com/Yummy-sk"
+            icon={GitHubIcon}
+            className="mt-4"
+          >
             GitHub
           </SocialLink>
           <SocialLink href="#" icon={LinkedInIcon} className="mt-4">

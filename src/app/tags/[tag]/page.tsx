@@ -16,13 +16,13 @@ export default async function Page({ params }: Props) {
 
   return (
     <div className="w-full h-full relative">
-      {match(articles.filter(article => article.id != null))
+      {match(articles.filter((article) => article.id != null))
         .with([], () => <NotFound text={tag} />)
-        .otherwise(articles => (
+        .otherwise((articles_) => (
           <>
             <Back />
             <Layout.Header title={tag} />
-            <Layout articles={articles} />
+            <Layout articles={articles_} />
           </>
         ))}
     </div>

@@ -17,7 +17,7 @@ interface Props {
 }
 
 export default function Layout({ title, date, tags, children }: Props) {
-  let router = useRouter();
+  const router = useRouter();
 
   return (
     <div className="relative w-full h-full">
@@ -42,7 +42,7 @@ export default function Layout({ title, date, tags, children }: Props) {
               </time>
 
               <div className="flex flex-row gap-2">
-                {tags.map(tag => (
+                {tags.map((tag) => (
                   <Link key={tag.id} href={`/tags/${tag.text}`}>
                     <Card.Tag text={tag.text} />
                   </Link>

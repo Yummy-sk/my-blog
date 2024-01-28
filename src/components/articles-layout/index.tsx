@@ -23,7 +23,7 @@ function Article({ article }: { article: Item }) {
           </Card.Eyebrow>
           <Card.Description>{article.description}</Card.Description>
           <div className="flex flex-row gap-2">
-            {article.tags.map(tag => (
+            {article.tags.map((tag) => (
               <Card.Tag key={tag.id} text={tag.text} />
             ))}
           </div>
@@ -48,8 +48,8 @@ export default function Layout({ articles }: Props) {
         <div className="flex max-w-3xl flex-col space-y-16">
           {articles
             // FIXME: DB NULL 내려오는 이슈 수정 필
-            .filter(article => article.id != null)
-            .map(article => (
+            .filter((article) => article.id != null)
+            .map((article) => (
               <Article key={article.slug} article={article} />
             ))}
         </div>

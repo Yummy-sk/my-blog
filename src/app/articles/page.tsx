@@ -9,8 +9,8 @@ export default async function Page() {
   return (
     <div className="w-full h-full">
       <Layout.Header
-        title="Writing on software design, company building, and the aerospace industry."
-        description="All of my long-form thoughts on programming, leadership, product design, and more, collected in chronological order."
+        title="Writing on software programming and experiences."
+        description="Programming and insights from my experience, in chronological order."
       />
       <Layout articles={articles} />
     </div>

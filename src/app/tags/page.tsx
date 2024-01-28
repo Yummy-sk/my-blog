@@ -19,8 +19,6 @@ function Tag({ text, count }: TagProps) {
 export default async function Page() {
   const tags = await Tags.get();
 
-  console.log(tags);
-
   return (
     <div className="w-full h-full">
       <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100">

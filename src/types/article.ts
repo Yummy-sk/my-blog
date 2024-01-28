@@ -1,5 +1,5 @@
-import { Database } from "./supabase";
+import { Database } from './supabase';
 
-type Article = Database["public"]["Functions"]["get_article"]["Returns"][number]
+type Article = Database['public']['Functions']['get_article']['Returns'][number];
 
-export type { Article }
+export type { Article };

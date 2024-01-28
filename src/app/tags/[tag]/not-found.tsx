@@ -7,7 +7,7 @@ interface Props {
 }
 
 export default function NotFound({ text }: Props) {
-  let router = useRouter();
+  const router = useRouter();
 
   return (
     <div className="mx-auto max-w-7xl px-6 py-32 text-center sm:py-40 lg:px-8">
@@ -19,10 +19,12 @@ export default function NotFound({ text }: Props) {
       </p>
       <div className="mt-10 flex justify-center">
         <button
+          type="button"
           className="text-sm font-medium text-teal-500"
           onClick={() => router.back()}
         >
-          <span aria-hidden="true">&larr;</span>Go Back
+          <span aria-hidden="true">&larr;</span>
+          Go Back
         </button>
       </div>
     </div>

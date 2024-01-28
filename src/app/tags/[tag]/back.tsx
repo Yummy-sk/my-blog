@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import { Button } from '@/components/button';
 
 export default function Back() {
-  let router = useRouter();
+  const router = useRouter();
 
   return (
     <Button.Back

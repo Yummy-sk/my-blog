@@ -10,7 +10,7 @@ interface ItemProps {
 }
 
 function Item({ href, text }: ItemProps) {
-  let isActive = usePathname() === href;
+  const isActive = usePathname() === href;
 
   return (
     <li>
@@ -20,7 +20,7 @@ function Item({ href, text }: ItemProps) {
           'relative block px-3 py-2 transition',
           isActive
             ? 'text-teal-500 dark:text-teal-400'
-            : 'hover:text-teal-500 dark:hover:text-teal-400'
+            : 'hover:text-teal-500 dark:hover:text-teal-400',
         )}
       >
         {text}
@@ -39,7 +39,7 @@ interface Props {
 export default function PcNav({ className = '' }: Props) {
   return (
     <nav className={className}>
-      <ul className="flex rounded-full bg-white/90 px-3 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10">
+      <ul className="-mr-11 flex rounded-full bg-white/90 px-3 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10">
         <Item href="/" text="About" />
         <Item href="/articles" text="Articles" />
         <Item href="/tags" text="Tags" />

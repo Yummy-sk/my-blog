@@ -8,31 +8,29 @@ import MDX from './mdx';
 
 export const revalidate = 0;
 
-const serializeMdx = (source: string) => {
-  return serialize(source, {
-    mdxOptions: {
-      remarkPlugins: [remarkGfm],
-      rehypePlugins: [
-        [
-          // @ts-ignore
-          rehypePrettyCode,
-          {
-            theme: 'material-theme-palenight',
-          },
-        ],
-        [
-          rehypeAutolinkHeadings,
-          {
-            properties: {
-              className: ['anchor dark:text-zinc-100'],
-            },
-          },
-        ],
+const serializeMdx = (source: string) => serialize(source, {
+  mdxOptions: {
+    remarkPlugins: [remarkGfm],
+    rehypePlugins: [
+      [
+        // @ts-ignore
+        rehypePrettyCode,
+        {
+          theme: 'material-theme-palenight',
+        },
       ],
-      format: 'mdx',
-    },
-  });
-};
+      [
+        rehypeAutolinkHeadings,
+        {
+          properties: {
+            className: ['anchor dark:text-zinc-100'],
+          },
+        },
+      ],
+    ],
+    format: 'mdx',
+  },
+});
 
 interface Props {
   params: {

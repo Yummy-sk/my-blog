@@ -5,15 +5,15 @@ import * as Env from '@/utils/env';
 class SupabaseClient {
   private supabaseClient;
 
-  constructor() { 
+  constructor() {
     const supabaseUrl = Env.get({ key: 'SUPABASE_URL' });
     const supabaseKey = Env.get({ key: 'SUPABASE_ANON_KEY' });
     this.supabaseClient = createClient<Database>(supabaseUrl, supabaseKey);
   }
 
-  get get() { 
+  get get() {
     return this.supabaseClient;
   }
 }
 
-export default new SupabaseClient()
+export default new SupabaseClient();
