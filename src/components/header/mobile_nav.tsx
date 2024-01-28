@@ -96,7 +96,7 @@ export default function MobileNav({ className = '' }: Props) {
               <ul className="-my-2 divide-y divide-zinc-100 text-base text-zinc-800 dark:divide-zinc-100/5 dark:text-zinc-300">
                 <Item href="/" text="About" />
                 <Item href="/articles" text="Articles" />
-                <Item href="/projects" text="Projects" />
+                <Item href="/tags" text="Tags" />
               </ul>
             </nav>
           </Popover.Panel>

@@ -76,6 +76,14 @@ Card.Description = function CardDescription({
   );
 };
 
+Card.Tag = function CardTag({ text }: { text: string }) {
+  return (
+    <div className="relative z-10 mt-4 flex items-center text-sm text-zinc-500 dark:text-zinc-400 transition hover:text-teal-500 dark:hover:text-teal-500">
+      {`#${text}`}
+    </div>
+  );
+};
+
 Card.Cta = function CardCta({ children }: { children: React.ReactNode }) {
   return (
     <div

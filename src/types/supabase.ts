@@ -130,6 +130,10 @@ export interface Database {
       [_ in never]: never
     }
     Functions: {
+      aggrigate_article: {
+        Args: Record<PropertyKey, never>
+        Returns: number
+      }
       get_article: {
         Args: {
           slug_param: string
@@ -143,13 +147,17 @@ export interface Database {
           created_at: string
           is_deleted: boolean
           slug: string
-          tags: Json[]
+          tags: {
+            id: string
+            text: string
+          }[]
         }[]
       }
       get_articles: {
         Args: {
           page_number: number
           page_size: number
+          tag_text?: string
         }
         Returns: {
           id: number
@@ -157,21 +165,17 @@ export interface Database {
           description: string
           created_at: string
           slug: string
-          tags: Json[]
+          tags: {
+            id: string
+            text: string
+          }[]
         }[]
       }
-      get_posts: {
-        Args: {
-          page_number: number
-          page_size: number
-        }
+      get_tags: {
+        Args: Record<PropertyKey, never>
         Returns: {
-          id: number
-          title: string
-          description: string
-          content: string
-          created_at: string
-          tags: Json[]
+          text: string
+          count: number
         }[]
       }
     }
