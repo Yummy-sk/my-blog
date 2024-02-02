@@ -4,7 +4,6 @@ import * as Articles from '@/actions/articles';
 import Layout from '@/components/articles-layout';
 import Back from './back';
 import NotFound from './not-found';
-// import { Metadata } from 'next/types';
 
 interface Props {
   params: {
