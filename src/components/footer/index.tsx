@@ -29,8 +29,7 @@ export default function Footer() {
           <p className="text-sm text-zinc-400 dark:text-zinc-500">
             &copy;
             {new Date().getFullYear()}
-            SangKwon Yeum. All rights
-            reserved.
+            &nbsp; SangKwon Yeum. All rights reserved.
           </p>
         </div>
       </div>
