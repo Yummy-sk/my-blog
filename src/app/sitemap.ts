@@ -4,7 +4,7 @@ import * as Tags from '@/actions/tags';
 import * as Env from '@/utils/env';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const siteUrl = Env.get({ key: 'PRODUCTION_URL' });
+  const siteUrl = Env.get({ key: 'BASE_URL' });
 
   const rootPages: MetadataRoute.Sitemap = ['', 'articles', 'tags'].map(
     (path) => ({

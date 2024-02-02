@@ -7,7 +7,7 @@ function makeOption(value: string | undefined | null): O.Option<string> {
 }
 
 interface Get {
-  key: 'SUPABASE_URL' | 'SUPABASE_ANON_KEY' | 'PRODUCTION_URL';
+  key: 'SUPABASE_URL' | 'SUPABASE_ANON_KEY' | 'BASE_URL';
 }
 
 export function get({ key }: Get) {
@@ -15,7 +15,7 @@ export function get({ key }: Get) {
     match(key)
       .with('SUPABASE_URL', () => process.env.SUPABASE_URL)
       .with('SUPABASE_ANON_KEY', () => process.env.SUPABASE_ANON_KEY)
-      .with('PRODUCTION_URL', () => process.env.PRODUCTION_URL)
+      .with('BASE_URL', () => process.env.BASE_URL)
       .exhaustive(),
     makeOption,
   );
