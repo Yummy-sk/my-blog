@@ -5,6 +5,8 @@ import Provider from '@/providers';
 import './globals.css';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
+import Favicon from '../../public/favicon.ico';
+import AppleTouch from '../../public/apple-touch-icon.png';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -21,11 +23,11 @@ export const metadata: Metadata = {
   },
   creator: 'Sang Kwon Yeum',
   icons: {
-    icon: ['/public/favicon.ico'],
-    apple: ['/public/apple-touch-icon.png'],
-    shortcut: ['/public/apple-touch-icon.png'],
+    icon: [Favicon.src],
+    apple: [AppleTouch.src],
+    shortcut: [AppleTouch.src],
   },
-  manifest: '/public/site.webmanifest',
+  manifest: '../public/site.webmanifest',
   openGraph: {
     type: 'article',
   },

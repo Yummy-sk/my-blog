@@ -24,38 +24,42 @@ export async function generateStaticParams() {
   }));
 }
 
-export const generateMetadata = async ({ params }: Props): Promise<Metadata> => {
-  const { title, description } = await Article.get({ slug: decodeURIComponent(params.slug) });
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { title, description, tags } = await Article.get({
+    slug: decodeURIComponent(params.slug),
+  });
 
   return {
     title,
     description,
+    keywords: tags.map((tag) => tag.text),
   };
-};
+}
 
-const serializeMdx = (source: string) => serialize(source, {
-  mdxOptions: {
-    remarkPlugins: [remarkGfm],
-    rehypePlugins: [
-      [
-        // @ts-ignore
-        rehypePrettyCode,
-        {
-          theme: 'material-theme-palenight',
-        },
-      ],
-      [
-        rehypeAutolinkHeadings,
-        {
-          properties: {
-            className: ['anchor dark:text-zinc-100'],
+const serializeMdx = (source: string) =>
+  serialize(source, {
+    mdxOptions: {
+      remarkPlugins: [remarkGfm],
+      rehypePlugins: [
+        [
+          // @ts-ignore
+          rehypePrettyCode,
+          {
+            theme: 'material-theme-palenight',
           },
-        },
+        ],
+        [
+          rehypeAutolinkHeadings,
+          {
+            properties: {
+              className: ['anchor dark:text-zinc-100'],
+            },
+          },
+        ],
       ],
-    ],
-    format: 'mdx',
-  },
-});
+      format: 'mdx',
+    },
+  });
 
 export default async function Page({ params }: Props) {
   const data = await Article.get({ slug: decodeURIComponent(params.slug) });

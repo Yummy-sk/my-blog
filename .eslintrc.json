@@ -8,6 +8,7 @@
     "react/react-in-jsx-scope": "off",
     "react/jsx-props-no-spreading": "off",
     "object-curly-newline": "off",
-    "react/require-default-props": "off"
+    "react/require-default-props": "off",
+    "implicit-arrow-linebreak": "off"
   }
 }

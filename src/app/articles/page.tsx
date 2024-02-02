@@ -6,7 +6,6 @@ export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: 'Articles',
-  description: 'My Blog',
 };
 
 export default async function Page() {
