@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/react';
 import Provider from '@/providers';
 import './globals.css';
 import Header from '@/components/header';
@@ -52,6 +53,7 @@ export default function RootLayout({ children }: Props) {
             <Footer />
           </div>
         </Provider>
+        <Analytics />
       </body>
     </html>
   );
