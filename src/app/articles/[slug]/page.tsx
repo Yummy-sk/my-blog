@@ -1,3 +1,4 @@
+import { Metadata } from 'next';
 import remarkGfm from 'remark-gfm';
 import rehypePrettyCode from 'rehype-pretty-code';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
@@ -6,6 +7,12 @@ import Layout from '@/components/article-layout';
 import * as Article from '@/actions/article';
 import * as Articles from '@/actions/articles';
 import MDX from './mdx';
+
+interface Props {
+  params: {
+    slug: string;
+  };
+}
 
 export async function generateStaticParams() {
   const articles = await Articles.get({ page: 1, size: 10 });
@@ -16,6 +23,15 @@ export async function generateStaticParams() {
     },
   }));
 }
+
+export const generateMetadata = async ({ params }: Props): Promise<Metadata> => {
+  const { title, description } = await Article.get({ slug: decodeURIComponent(params.slug) });
+
+  return {
+    title,
+    description,
+  };
+};
 
 const serializeMdx = (source: string) => serialize(source, {
   mdxOptions: {
@@ -40,12 +56,6 @@ const serializeMdx = (source: string) => serialize(source, {
     format: 'mdx',
   },
 });
-
-interface Props {
-  params: {
-    slug: string;
-  };
-}
 
 export default async function Page({ params }: Props) {
   const data = await Article.get({ slug: decodeURIComponent(params.slug) });

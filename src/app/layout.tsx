@@ -15,6 +15,21 @@ interface Props {
 export const metadata: Metadata = {
   title: 'Sang Kwon Yeum',
   description: 'My Blog',
+  applicationName: 'My Blog',
+  authors: {
+    name: 'Sang Kwon Yeum',
+  },
+  creator: 'Sang Kwon Yeum',
+  icons: {
+    icon: ['/public/favicon.ico'],
+    apple: ['/public/apple-touch-icon.png'],
+    shortcut: ['/public/apple-touch-icon.png'],
+  },
+  manifest: '/public/site.webmanifest',
+  openGraph: {
+    type: 'article',
+  },
+  metadataBase: new URL('https://acme.com'),
 };
 
 export default function RootLayout({ children }: Props) {
