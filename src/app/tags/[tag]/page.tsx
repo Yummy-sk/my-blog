@@ -1,4 +1,5 @@
 import { match } from 'ts-pattern';
+import * as Tags from '@/actions/tags';
 import * as Articles from '@/actions/articles';
 import Layout from '@/components/articles-layout';
 import Back from './back';
@@ -7,6 +8,23 @@ import NotFound from './not-found';
 interface Props {
   params: {
     tag: string;
+  };
+}
+
+export async function generateStaticParams() {
+  const tags = await Tags.get();
+
+  return tags.map((tag) => ({
+    params: {
+      tag: tag.text,
+    },
+  }));
+}
+
+export function generateMetadata({ params }: Props) {
+  return {
+    title: `${params.tag} Articles`,
+    keywords: [params.tag],
   };
 }
 

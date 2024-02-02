@@ -5,6 +5,8 @@ import Provider from '@/providers';
 import './globals.css';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
+import Favicon from '../../public/favicon.ico';
+import AppleTouch from '../../public/apple-touch-icon.png';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -15,6 +17,21 @@ interface Props {
 export const metadata: Metadata = {
   title: 'Sang Kwon Yeum',
   description: 'My Blog',
+  applicationName: 'My Blog',
+  authors: {
+    name: 'Sang Kwon Yeum',
+  },
+  creator: 'Sang Kwon Yeum',
+  icons: {
+    icon: [Favicon.src],
+    apple: [AppleTouch.src],
+    shortcut: [AppleTouch.src],
+  },
+  manifest: '../public/site.webmanifest',
+  openGraph: {
+    type: 'article',
+  },
+  metadataBase: new URL('https://acme.com'),
 };
 
 export default function RootLayout({ children }: Props) {
