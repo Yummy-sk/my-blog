@@ -4,9 +4,18 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import { serialize } from 'next-mdx-remote/serialize';
 import Layout from '@/components/article-layout';
 import * as Article from '@/actions/article';
+import * as Articles from '@/actions/articles';
 import MDX from './mdx';
 
-export const revalidate = 0;
+export async function generateStaticParams() {
+  const articles = await Articles.get({ page: 1, size: 10 });
+
+  return articles.map((article) => ({
+    params: {
+      slug: article.slug,
+    },
+  }));
+}
 
 const serializeMdx = (source: string) => serialize(source, {
   mdxOptions: {

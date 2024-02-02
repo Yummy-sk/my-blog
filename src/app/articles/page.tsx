@@ -1,7 +1,7 @@
 import * as Articles from '@/actions/articles';
 import Layout from '@/components/articles-layout';
 
-export const revalidate = 0;
+export const revalidate = 3600;
 
 export default async function Page() {
   const articles = await Articles.get({ page: 1, size: 10 });
