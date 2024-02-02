@@ -1,5 +1,10 @@
 import Link from 'next/link';
 import * as Tags from '@/actions/tags';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Tags',
+};
 
 interface TagProps {
   text: string;
