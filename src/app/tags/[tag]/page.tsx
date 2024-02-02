@@ -11,7 +11,7 @@ interface Props {
   };
 }
 
-export async function generateStaticPaths() {
+export async function generateStaticParams() {
   const tags = await Tags.get();
 
   return tags.map((tag) => ({
