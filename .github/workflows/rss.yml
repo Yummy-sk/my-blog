@@ -15,10 +15,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-        env:
-          SUPABASE_URL: "Hello"
-          SUPABASE_ANON_KEY: "Hello"
-          BASE_URL: "HELLO"
 
       - name: Install dependencies
         run: yarn install --immutable --check-cache
@@ -26,6 +22,10 @@ jobs:
       - name: Fetch RSS Feed
         run: |
           npx tsx ./scripts/rss.ts
+        env:
+          SUPABASE_URL: "Hello"
+          SUPABASE_ANON_KEY: "Hello"
+          BASE_URL: "HELLO"
 
       - name: Commit and push changes
         run: |
