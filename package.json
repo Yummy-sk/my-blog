@@ -5,7 +5,6 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "prebuild": "ts-node ./scripts/rss.ts",
     "start": "next start",
     "lint": "next lint",
     "introspect": "supabase gen types typescript --linked >src/types/supabase.ts"

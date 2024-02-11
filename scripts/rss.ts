@@ -1,7 +1,7 @@
 import fs from 'fs';
 import RSS from 'rss';
-import * as Env from '../src/utils/env.js';
-import * as Articles from '../src/actions/articles.js';
+import * as Env from '../src/utils/env';
+import * as Articles from '../src/actions/articles';
 
 const Blog = {
   make: async () => {
