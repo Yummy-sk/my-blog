@@ -21,9 +21,9 @@ jobs:
 
       - name: Create env.local file
         run: |
-          echo "SUPABASE_URL=${{ secrets.SUPABASE_URL }}" >> env.local
-          echo "SUPABASE_ANON_KEY=${{ secrets.SUPABASE_ANON_KEY }}" >> env.local
-          echo "BASE_URL=${{ secrets.BASE_URL }}" >> env.local
+          echo "SUPABASE_URL=${{ secrets.SUPABASE_URL }}" >> .env.local
+          echo "SUPABASE_ANON_KEY=${{ secrets.SUPABASE_ANON_KEY }}" >> .env.local
+          echo "BASE_URL=${{ secrets.BASE_URL }}" >> .env.local
 
       - name: Fetch RSS Feed
         run: |
