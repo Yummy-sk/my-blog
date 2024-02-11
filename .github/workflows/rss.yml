@@ -1,0 +1,36 @@
+name: Fetch RSS Feed
+
+on:
+  workflow_dispatch:
+
+jobs:
+  fetch-rss:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout node
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: yarn install --immutable --check-cache
+
+      - name: Fetch RSS Feed
+        run: |
+          ts-node ./scripts/rss.ts
+          env:
+            BASE_URL: ${{ secrets.BASE_URL }}
+            SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+            SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.email "
+          git config --global user.name "GitHub Actions"
+          git add .
+          git commit -m "Update RSS Feed"
+          git push origin main

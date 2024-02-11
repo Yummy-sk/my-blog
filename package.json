@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "prebuild": "ts-node ./scripts/rss.ts",
     "start": "next start",
     "lint": "next lint",
     "introspect": "supabase gen types typescript --linked >src/types/supabase.ts"
@@ -45,6 +46,9 @@
     "prettier": "^3.2.4",
     "prettier-plugin-tailwindcss": "^0.5.11",
     "tailwindcss": "^3.3.0",
+    "ts-node": "^10.9.2",
+    "tsc": "^2.0.4",
+    "tslib": "^2.6.2",
     "typescript": "^5.3.3"
   }
 }
