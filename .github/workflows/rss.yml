@@ -19,14 +19,15 @@ jobs:
       - name: Install dependencies
         run: yarn install --immutable --check-cache
 
+      - name: Create env.local file
+        run: |
+          echo "SUPABASE_URL=${{ secrets.SUPABASE_URL }}" >> env.local
+          echo "SUPABASE_ANON_KEY=${{ secrets.SUPABASE_ANON_KEY }}" >> env.local
+          echo "BASE_URL=${{ secrets.BASE_URL }}" >> env.local
+
       - name: Fetch RSS Feed
         run: |
           npx tsx ./scripts/rss.ts
-          
-          env:
-            BASE_URL: ${{ secrets.BASE_URL }}
-            SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-            SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
 
       - name: Commit and push changes
         run: |
