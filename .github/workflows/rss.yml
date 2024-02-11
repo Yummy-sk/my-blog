@@ -31,6 +31,7 @@ jobs:
         run: |
           git config --global user.email "kunshup2000@gmail.com"
           git config --global user.name "Yummy-sk"
+          git checkout -b "update/rss"
           git add .
           git commit -m "Updated RSS feed"
-          git push origin staging
+          git push origin "update/rss"
