@@ -132,7 +132,7 @@ export default function Page() {
             icon={RssIcon}
             className="mt-4"
           >
-            GitHub
+            RSS
           </SocialLink>
           <SocialLink href="#" icon={LinkedInIcon} className="mt-4">
             LinkedIn
