@@ -21,7 +21,8 @@ jobs:
 
       - name: Fetch RSS Feed
         run: |
-          node ./scripts/rss.ts
+          npx tsx ./scripts/rss.ts
+          
           env:
             BASE_URL: ${{ secrets.BASE_URL }}
             SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
