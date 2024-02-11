@@ -2,7 +2,14 @@ import { type Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import clsx from 'clsx';
-import { GitHubIcon, InstagramIcon, LinkedInIcon } from '@/components/icons';
+import {
+  FaRssSquare as RssIcon,
+  FaGithub as GitHubIcon,
+  FaInstagram as InstagramIcon,
+} from 'react-icons/fa';
+import { MdEmail as MailIcon } from 'react-icons/md';
+import { FaLinkedin as LinkedInIcon } from 'react-icons/fa6';
+
 import portraitImage from '@/images/portrait.jpg';
 
 interface SocialProps {
@@ -23,17 +30,6 @@ function SocialLink({ className, href, children, icon: Icon }: SocialProps) {
         <span className="ml-4">{children}</span>
       </Link>
     </li>
-  );
-}
-
-function MailIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
-      <path
-        fillRule="evenodd"
-        d="M6 5a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V8a3 3 0 0 0-3-3H6Zm.245 2.187a.75.75 0 0 0-.99 1.126l6.25 5.5a.75.75 0 0 0 .99 0l6.25-5.5a.75.75 0 0 0-.99-1.126L12 12.251 6.245 7.187Z"
-      />
-    </svg>
   );
 }
 
@@ -127,6 +123,13 @@ export default function Page() {
           <SocialLink
             href="https://github.com/Yummy-sk"
             icon={GitHubIcon}
+            className="mt-4"
+          >
+            GitHub
+          </SocialLink>
+          <SocialLink
+            href="https://sang-kwon-yeum.me/rss.xml"
+            icon={RssIcon}
             className="mt-4"
           >
             GitHub

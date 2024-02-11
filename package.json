@@ -21,6 +21,7 @@
     "next-themes": "^0.2.1",
     "react": "^18",
     "react-dom": "^18",
+    "react-icons": "^5.0.1",
     "rehype-autolink-headings": "^7.1.0",
     "rehype-pretty-code": "^0.12.6",
     "remark-gfm": "3.0.1",
