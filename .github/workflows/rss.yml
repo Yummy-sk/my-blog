@@ -15,15 +15,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+          BASE_URL: ${{ secrets.BASE_URL }}
 
       - name: Install dependencies
         run: yarn install --immutable --check-cache
-
-      - name: Create env.local file
-        run: |
-          echo "SUPABASE_URL=${{ secrets.SUPABASE_URL }}" >> .env.local
-          echo "SUPABASE_ANON_KEY=${{ secrets.SUPABASE_ANON_KEY }}" >> .env.local
-          echo "BASE_URL=${{ secrets.BASE_URL }}" >> .env.local
 
       - name: Fetch RSS Feed
         run: |
