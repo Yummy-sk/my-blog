@@ -3,9 +3,9 @@
 import supabase from '@/supabase';
 
 interface GET {
-  page?: number
-  size?: number
-  tag?: string
+  page?: number;
+  size?: number;
+  tag?: string;
 }
 
 export const get = async ({ page = 1, size = 10, tag }: GET) => {
