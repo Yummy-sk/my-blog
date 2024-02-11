@@ -23,9 +23,9 @@ jobs:
         run: |
           npx tsx ./scripts/rss.ts
         env:
-          SUPABASE_URL: "Hello"
-          SUPABASE_ANON_KEY: "Hello"
-          BASE_URL: "HELLO"
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+          BASE_URL: ${{ secrets.BASE_URL }}
 
       - name: Commit and push changes
         run: |
