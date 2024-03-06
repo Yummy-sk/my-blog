@@ -1,7 +1,7 @@
 name: Linter
 on:
-  pull_request: 
-    branches: 
+  pull_request:
+    branches:
       - main
       - staging
 
@@ -11,4 +11,4 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Lint
-        run: yarn install && yarn lint
+        run: pnpm install && pnpm lint

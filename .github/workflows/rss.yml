@@ -17,7 +17,7 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
-        run: yarn install --immutable --check-cache
+        run: pnpm install --immutable --check-cache
 
       - name: Fetch RSS Feed
         run: |
