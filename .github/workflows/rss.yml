@@ -16,8 +16,13 @@ jobs:
         with:
           node-version: 20
 
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 8
+
       - name: Install dependencies
-        run: yarn install --immutable --check-cache
+        run: pnpm install --immutable --check-cache
 
       - name: Fetch RSS Feed
         run: |
