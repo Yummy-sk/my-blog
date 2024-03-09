@@ -13,7 +13,8 @@
     "jsx": "preserve",
     "incremental": true,
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "about/injector": ["../about/src/injector.tsx"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

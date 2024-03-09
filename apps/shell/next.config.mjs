@@ -8,7 +8,9 @@ const nextConfig = {
       new NextFederationPlugin({
         name: 'shell',
         filename: 'static/chunks/remoteEntry.js',
-        exposes: {},
+        remotes: {
+          about: 'about@http://localhost:3001/remoteEntry.js',
+        },
         shared: {
           '@career-up/ui-kit': {
             singleton: true,
