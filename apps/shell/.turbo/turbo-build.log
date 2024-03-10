@@ -8,7 +8,7 @@
 
 [?25l [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G[?25h [37m[1m [22m[39m Linting and checking validity of types     [32m[1m✓[22m[39m Linting and checking validity of types 
  [37m[1m [22m[39m Creating an optimized production build ...
-(node:16747) [DEP_WEBPACK_PRE_COMPILED_SCHEMA_INVALID] DeprecationWarning: webpack bug: Pre-compiled schema reports error while real schema is happy. This has performance drawbacks.
+(node:20111) [DEP_WEBPACK_PRE_COMPILED_SCHEMA_INVALID] DeprecationWarning: webpack bug: Pre-compiled schema reports error while real schema is happy. This has performance drawbacks.
 (Use `node --trace-deprecation ...` to show where the warning was created)
 No ModuleFederationPlugin(s) found.
 [1m[31m[ Module Federation Manifest Plugin ]: Manifest will not generate, because publicPath can only be absolute path, but got 'auto'[39m[22m
@@ -26,20 +26,26 @@ Import trace for requested module:
 external "about@http://localhost:3001/remoteEntry.js"
 remote about/injector
 
-[?25l [37m[1m [22m[39m Collecting page data  [36m.[39m[2K[1G[?25h [37m[1m [22m[39m Collecting page data     [32m[1m✓[22m[39m Collecting page data 
-[?25l [37m[1m [22m[39m Generating static pages (0/3)  [36m[    ][39m[2K[1G[?25h [32m[1m✓[22m[39m Generating static pages (3/3) 
+[?25l [37m[1m [22m[39m Collecting page data  [36m.[39m[2K[1G [37m[1m [22m[39m Collecting page data  [36m..[39mfetching http://localhost:3001/remoteEntry.js
+about/injector offline
+[2K[1G[?25h [37m[1m [22m[39m Collecting page data     [32m[1m✓[22m[39m Collecting page data 
+[?25l [37m[1m [22m[39m Generating static pages (0/3)  [36m[    ][39mfetching http://localhost:3001/remoteEntry.js
+about/injector offline
+Comps undefined
+[2K[1G [37m[1m [22m[39m Generating static pages (0/3)  [36m[=   ][39m  [37m[1m [22m[39m Generating static pages (2/3) 
+[2K[1G[1A[2K[1G[?25h [32m[1m✓[22m[39m Generating static pages (3/3) 
 [?25l [37m[1m [22m[39m Finalizing page optimization  [36m.[39m[?25l [37m[1m [22m[39m Collecting build traces  [36m.[39m[2K[1G[?25h [37m[1m [22m[39m Collecting build traces     [32m[1m✓[22m[39m Collecting build traces 
 [2K[1G[?25h [37m[1m [22m[39m Finalizing page optimization     [32m[1m✓[22m[39m Finalizing page optimization 
 
 [4mRoute (pages)[24m                           [4mSize[24m     [4mFirst Load JS[24m
-┌ ○ /                                   982 B          [37m[1m75.5 kB[22m[39m
-├   /_app                               0 B            [37m[1m74.5 kB[22m[39m
-├ ○ /404                                198 B          [37m[1m74.7 kB[22m[39m
-└ λ /api/hello                          0 B            [37m[1m74.5 kB[22m[39m
-+ First Load JS shared by all           [37m[1m76 kB[22m[39m
+┌ ○ /                                   939 B          [37m[1m75.3 kB[22m[39m
+├   /_app                               0 B            [37m[1m74.3 kB[22m[39m
+├ ○ /404                                198 B          [37m[1m74.5 kB[22m[39m
+└ λ /api/hello                          0 B            [37m[1m74.3 kB[22m[39m
++ First Load JS shared by all           [37m[1m75.7 kB[22m[39m
   ├ chunks/main-3744e73b077a3047.js     50.6 kB
-  └ chunks/webpack-927ae04d8e6216f1.js  23.6 kB
-  └ other shared chunks (total)         1.88 kB
+  └ chunks/webpack-e78a0acc4c12858d.js  23.4 kB
+  └ other shared chunks (total)         1.75 kB
 
 ○  (Static)   prerendered as static content
 λ  (Dynamic)  server-rendered on demand using Node.js
