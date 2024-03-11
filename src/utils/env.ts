@@ -7,7 +7,11 @@ function makeOption(value: string | undefined | null): O.Option<string> {
 }
 
 interface Get {
-  key: 'SUPABASE_URL' | 'SUPABASE_ANON_KEY' | 'BASE_URL';
+  key:
+    | 'SUPABASE_URL'
+    | 'SUPABASE_ANON_KEY'
+    | 'BASE_URL'
+    | 'CHANNEL_TALK_PLUGIN_KEY';
 }
 
 export function get({ key }: Get) {
@@ -16,6 +20,10 @@ export function get({ key }: Get) {
       .with('SUPABASE_URL', () => process.env.SUPABASE_URL)
       .with('SUPABASE_ANON_KEY', () => process.env.SUPABASE_ANON_KEY)
       .with('BASE_URL', () => process.env.BASE_URL)
+      .with(
+        'CHANNEL_TALK_PLUGIN_KEY',
+        () => process.env.NEXT_PUBLIC_CHANNEL_TALK_PLUGIN_KEY,
+      )
       .exhaustive(),
     makeOption,
   );
