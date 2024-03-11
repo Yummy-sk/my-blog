@@ -4,11 +4,12 @@ import { Inter } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import Provider from '@/providers';
-import './globals.css';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
+import ChannelTalk from '@/components/channel-talk';
 import Favicon from '../../public/favicon.ico';
 import AppleTouch from '../../public/apple-touch-icon.png';
+import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -56,6 +57,7 @@ export default function RootLayout({ children }: Props) {
         </Provider>
         <Analytics />
         <SpeedInsights />
+        <ChannelTalk />
       </body>
     </html>
   );
